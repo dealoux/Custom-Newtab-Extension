@@ -1,0 +1,4 @@
+/logs
+/.vscode
+/.git
+package-lock.json
