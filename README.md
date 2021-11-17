@@ -9,8 +9,8 @@
 # Installation
 ## Chromnium Browsers (Native)
 In the extension settings
-	1. Make sure `Developer Mode` is enabled 
-	2. Load unpacked, choose the whole folder
+1. Make sure `Developer Mode` is enabled 
+2. Load unpacked, choose the whole folder
 
 ## Firefox (Tested)
 1. You will need to first disable signature signing (available only to Firefox Nightly and Developer)
