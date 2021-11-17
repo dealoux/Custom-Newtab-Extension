@@ -22,7 +22,7 @@ pref('date_format','{{m}}.{{d}}.{{y}}');
 pref('time_format','12h');
 pref('ver_reset_clicked_options', '');
 pref('ver_update_ignore', '');
-pref('ver_update_major', '0.1.8.3');
+pref('ver_update_major', '1.0');
 pref('ver_update_minor', '0.1.8.4');
 
 
