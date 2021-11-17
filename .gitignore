@@ -2,3 +2,6 @@
 /.vscode
 /.git
 package-lock.json
+prefs-sys.js
+.gitignore
+bg-*.jpg
