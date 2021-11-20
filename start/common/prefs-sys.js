@@ -10,8 +10,8 @@ pref('cr','');
 pref('uref','');
 pref('itag','');
 pref('sengine','');
-pref('firstRunDomain','');
-pref('firstRunLandingPage','');
+pref('firstRunDomain',''); // to be fixed
+pref('firstRunLandingPage',''); // to be fixed
 pref('bg_img','bg-01.jpg');
 pref('bg_color','');
 pref('bg_img_list', 313);
@@ -26,5 +26,3 @@ pref('ver_reset_clicked_options', '');
 pref('ver_update_ignore', '');
 pref('ver_update_major', '1.0');
 pref('ver_update_minor', '0.1.8.4');
-
-

@@ -8,66 +8,10 @@
           document.addEventListener("DOMContentLoaded", e)
       }
   };
-  var n = function() {
-      if (document.getElementsByClassName("click-Rate").length) {
-          var e = document.getElementsByClassName("click-Rate");
-          for (var t = 0; t < e.length; t++) {
-              e[t].addEventListener("click", function() {
-                  chrome.runtime.sendMessage("click-Rate")
-              })
-          }
-      }
-      if (document.getElementsByClassName("click-ShareFB").length) {
-          var e = document.getElementsByClassName("click-ShareFB");
-          for (var t = 0; t < e.length; t++) {
-              e[t].addEventListener("click", function() {
-                  chrome.runtime.sendMessage("click-ShareFB")
-              })
-          }
-      }
-      if (document.getElementsByClassName("click-ShareGG").length) {
-          var e = document.getElementsByClassName("click-ShareGG");
-          for (var t = 0; t < e.length; t++) {
-              e[t].addEventListener("click", function() {
-                  chrome.runtime.sendMessage("click-ShareGG")
-              })
-          }
-      }
-      if (document.getElementsByClassName("click-ShareTW").length) {
-          var e = document.getElementsByClassName("click-ShareTW");
-          for (var t = 0; t < e.length; t++) {
-              e[t].addEventListener("click", function() {
-                  chrome.runtime.sendMessage("click-ShareTW")
-              })
-          }
-      }
-      if (document.getElementsByClassName("click-Donate").length) {
-          var e = document.getElementsByClassName("click-Donate");
-          for (var t = 0; t < e.length; t++) {
-              e[t].addEventListener("click", function() {
-                  chrome.runtime.sendMessage("click-Donate")
-              })
-          }
-      }
-  };
   var c = function() {
       var e = document.getElementsByClassName("entry-title");
       if (e) {
           e[0].innerHTML = "Update for " + chrome.i18n.getMessage("extName")
-      }
-  };
-  var a = function() {
-      var e = document.getElementById("installChromeWebStore");
-      if (e) {
-          e.innerHTML = '<p style="color:salmon;font-size:large;font-weight:bold;">Thanks for installing the extension! If you like it, please <a href="#" class="click-Rate">Rate</a>, <a href="#" class="click-ShareFB">Share on FB</a>, <a href="#" class="click-ShareGG">Google+</a>, <a href="#" class="click-ShareTW">Tweet</a>, and <a href="#" class="click-Donate">Donate</a>.</p>';
-          n()
-      }
-  };
-  var o = function() {
-      var e = document.getElementById("installChromeWebStore");
-      if (e) {
-          e.innerHTML = '<p style="color:salmon;font-size:large;font-weight:bold;">Thanks for using the extension! It was updated with bug-fixes, improvements and more HD images were added. If you like it, please <a href="#" class="click-Rate">Rate</a>, <a href="#" class="click-ShareFB">Share on FB</a>, <a href="#" class="click-ShareGG">Google+</a>, <a href="#" class="click-ShareTW">Tweet</a>, and <a href="#" class="click-Donate">Donate</a>.</p>';
-          n()
       }
   };
   var i = function(t, n) {
@@ -99,12 +43,6 @@
       if (e.debug) console.log("sender: ", s);
       if (n.type === "showMajor") {
           t(c)
-      }
-      if (n.type === "showInstall") {
-          t(a)
-      }
-      if (n.type === "showMinor") {
-          t(o)
       }
       if (n.type === "weather_info") {
           t(function() {

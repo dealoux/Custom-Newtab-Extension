@@ -134,7 +134,6 @@
               topSites: true
           }, function(e) {
               var t = 0;
-              $("#topsites_menu").html('<div><a id="lnk_bookmarks" href="http://freeaddon.com/how-to-show-bookmarks-bar/?utm_campaign=Extensions&utm_medium=mostvisited" target="_blank">Show Bookmarks</a></div>');
               for (var o = 0; o < e.length; o++) {
                   if (c.indexOf(e[o].url) >= 0) {
                       continue
@@ -276,7 +275,6 @@
       }
       var _ = function() {
           $("#topsites_menu").fadeOut(200);
-          $("#share_menu").fadeOut(200);
           $("#support_menu").fadeOut(200);
           $("#tool_menu").fadeOut(200)
       };
@@ -288,14 +286,12 @@
       utils.resetMouseEnterHandler($("#lnk_topsites"), function(e) {
           e.stopPropagation();
           $("#topsites_menu").show(200);
-          $("#share_menu").fadeOut(200);
           $("#support_menu").fadeOut(200);
           $("#tool_menu").fadeOut(200)
       });
       utils.resetClickHandler($("#lnk_topsites"), function(e) {
           e.stopPropagation();
           $("#topsites_menu").toggle(200);
-          $("#share_menu").fadeOut(200);
           $("#support_menu").fadeOut(200);
           $("#tool_menu").fadeOut(200)
       });
@@ -307,42 +303,16 @@
       utils.resetClickHandler($("#topsites_menu"), function(e) {
           e.stopPropagation()
       });
-      $("#share_menu").hide();
-      utils.resetMouseEnterHandler($("#lnk_share"), function(e) {
-          e.stopPropagation();
-          $("#topsites_menu").fadeOut(200);
-          $("#share_menu").show(200);
-          $("#support_menu").fadeOut(200);
-          $("#tool_menu").fadeOut(200)
-      });
-      utils.resetClickHandler($("#lnk_share"), function(e) {
-          e.stopPropagation();
-          $("#topsites_menu").fadeOut(200);
-          $("#share_menu").toggle(200);
-          $("#support_menu").fadeOut(200);
-          $("#tool_menu").fadeOut(200)
-      });
-      utils.resetMouseEnterHandler($("#share_menu"), function(e) {
-          e.stopPropagation();
-          $("#share_menu").off("mouseleave");
-          $("#share_menu").on("mouseleave", _)
-      });
-      utils.resetClickHandler($("#share_menu"), function(e) {
-          e.stopPropagation();
-          _()
-      });
       $("#support_menu").hide();
       utils.resetMouseEnterHandler($("#lnk_support"), function(e) {
           e.stopPropagation();
           $("#topsites_menu").fadeOut(200);
-          $("#share_menu").fadeOut(200);
           $("#support_menu").show(200);
           $("#tool_menu").fadeOut(200)
       });
       utils.resetClickHandler($("#lnk_support"), function(e) {
           e.stopPropagation();
           $("#topsites_menu").fadeOut(200);
-          $("#share_menu").fadeOut(200);
           $("#support_menu").toggle(200);
           $("#tool_menu").fadeOut(200)
       });
@@ -359,14 +329,12 @@
       utils.resetMouseEnterHandler($("#lnk_tool"), function(e) {
           e.stopPropagation();
           $("#topsites_menu").fadeOut(200);
-          $("#share_menu").fadeOut(200);
           $("#support_menu").fadeOut(200);
           $("#tool_menu").show(200)
       });
       utils.resetClickHandler($("#lnk_tool"), function(e) {
           e.stopPropagation();
           $("#topsites_menu").fadeOut(200);
-          $("#share_menu").fadeOut(200);
           $("#support_menu").fadeOut(200);
           $("#tool_menu").toggle(200)
       });

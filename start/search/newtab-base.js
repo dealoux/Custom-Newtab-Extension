@@ -263,97 +263,97 @@
                       }
                   }
               };
-              var n = function(e) {
-                  var t = $("<div/>").html(e).contents();
-                  if (t.attr("track")) {
-                      t.off("click");
-                      t.on("click", function() {
-                          if ($(this).attr("onetime")) {
-                              localStorage.setItem("onetime_clicked", localStorage.getItem("onetime_clicked") + "," + $(this).attr("track"))
-                          }
-                          if ($(this).attr("highlight")) {
-                              $(this).attr("class", ($(this).attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
-                              localStorage.setItem("highlight_clicked", localStorage.getItem("highlight_clicked") + "," + $(this).attr("track"))
-                          }
-                          chrome.runtime.sendMessage("click-" + $(this).attr("track"))
-                      })
-                  }
-                  if (t.attr("highlight") && (localStorage.getItem("highlight_clicked") + "").indexOf(t.attr("track")) == -1) {
-                      t.addClass(localStorage.getItem("highlight") || "highlight")
-                  }
-                  if (!t.attr("onetime") || (localStorage.getItem("onetime_clicked") + "").indexOf(t.attr("track")) == -1) {
-                      if (t.attr("showrate")) {
-                          var a = parseFloat(t.attr("showrate"));
-                          if (a > 0 && a < 1) a = a * 100;
-                          if (Math.floor(Math.random() * 100) <= a) {
-                              $("nav").append(t)
-                          }
-                      } else {
-                          $("nav").append(t)
-                      }
-                  }
-              };
-              var r = false;
-              if (i && typeof i["intro"] !== "undefined") {
-                  var c = i["intro"];
-                  for (var d = 0; d < Object.keys(c).length; d++) {
-                      if (Object.keys(c)[d].indexOf(e.chosenRandomBG) > -1) {
-                          r = true;
-                          s(Object.values(c)[d]);
-                          break
-                      }
-                  }
-              }
-              if (i && typeof i["quotes"] !== "undefined" && !r) {
-                  var g = i["quotes"];
-                  if (typeof g == "string" && g) {
-                      s(g)
-                  } else if (g.length && typeof g[0] == "string") {
-                      var f = [];
-                      for (var d = 0; d < g.length; d++) {
-                          var h = 1;
-                          var u = g[d].match(/ data-w="([0-9]+)"/);
-                          if (u && u.length >= 2) h = parseInt(u[1]);
-                          f.push({
-                              item: g[d],
-                              weight: h
-                          })
-                      }
-                      s(o(f))
-                  }
-              }
-          } catch (t) {
-              if (e.debug) console.log("Error parse geodata for quote.");
-              trackStatusEvent("error-geodata-quote", null, null)
-          }
-          try {
-              if (i && typeof i["nav"] !== "undefined") {
-                  var m = i["nav"];
-                  if (typeof m == "string" && m) {
-                      n(m)
-                  } else if (m.length && typeof m[0] == "string") {
-                      var p = [],
-                          _ = [];
-                      for (var d = 0; d < m.length; d++) {
-                          var h = 1;
-                          var u = m[d].match(/ data-w="([0-9]+)"/);
-                          if (u && u.length >= 2) h = parseInt(u[1]);
-                          if (m[d].indexOf("NavRelateExt") > -1) {
-                              p.push({
-                                  item: m[d],
-                                  weight: h
-                              })
-                          } else {
-                              _.push({
-                                  item: m[d],
-                                  weight: h
-                              })
-                          }
-                      }
-                      if (_.length) n(o(_));
-                      if (p.length) n(o(p))
-                  }
-              }
+        //       var n = function(e) {
+        //           var t = $("<div/>").html(e).contents();
+        //           if (t.attr("track")) {
+        //               t.off("click");
+        //               t.on("click", function() {
+        //                   if ($(this).attr("onetime")) {
+        //                       localStorage.setItem("onetime_clicked", localStorage.getItem("onetime_clicked") + "," + $(this).attr("track"))
+        //                   }
+        //                   if ($(this).attr("highlight")) {
+        //                       $(this).attr("class", ($(this).attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
+        //                       localStorage.setItem("highlight_clicked", localStorage.getItem("highlight_clicked") + "," + $(this).attr("track"))
+        //                   }
+        //                   chrome.runtime.sendMessage("click-" + $(this).attr("track"))
+        //               })
+        //           }
+        //           if (t.attr("highlight") && (localStorage.getItem("highlight_clicked") + "").indexOf(t.attr("track")) == -1) {
+        //               t.addClass(localStorage.getItem("highlight") || "highlight")
+        //           }
+        //           if (!t.attr("onetime") || (localStorage.getItem("onetime_clicked") + "").indexOf(t.attr("track")) == -1) {
+        //               if (t.attr("showrate")) {
+        //                   var a = parseFloat(t.attr("showrate"));
+        //                   if (a > 0 && a < 1) a = a * 100;
+        //                   if (Math.floor(Math.random() * 100) <= a) {
+        //                       $("nav").append(t)
+        //                   }
+        //               } else {
+        //                   $("nav").append(t)
+        //               }
+        //           }
+        //       };
+        //       var r = false;
+        //       if (i && typeof i["intro"] !== "undefined") {
+        //           var c = i["intro"];
+        //           for (var d = 0; d < Object.keys(c).length; d++) {
+        //               if (Object.keys(c)[d].indexOf(e.chosenRandomBG) > -1) {
+        //                   r = true;
+        //                   s(Object.values(c)[d]);
+        //                   break
+        //               }
+        //           }
+        //       }
+        //       if (i && typeof i["quotes"] !== "undefined" && !r) {
+        //           var g = i["quotes"];
+        //           if (typeof g == "string" && g) {
+        //               s(g)
+        //           } else if (g.length && typeof g[0] == "string") {
+        //               var f = [];
+        //               for (var d = 0; d < g.length; d++) {
+        //                   var h = 1;
+        //                   var u = g[d].match(/ data-w="([0-9]+)"/);
+        //                   if (u && u.length >= 2) h = parseInt(u[1]);
+        //                   f.push({
+        //                       item: g[d],
+        //                       weight: h
+        //                   })
+        //               }
+        //               s(o(f))
+        //           }
+        //       }
+        //   } catch (t) {
+        //       if (e.debug) console.log("Error parse geodata for quote.");
+        //       trackStatusEvent("error-geodata-quote", null, null)
+        //   }
+        //   try {
+        //       if (i && typeof i["nav"] !== "undefined") {
+        //           var m = i["nav"];
+        //           if (typeof m == "string" && m) {
+        //               n(m)
+        //           } else if (m.length && typeof m[0] == "string") {
+        //               var p = [],
+        //                   _ = [];
+        //               for (var d = 0; d < m.length; d++) {
+        //                   var h = 1;
+        //                   var u = m[d].match(/ data-w="([0-9]+)"/);
+        //                   if (u && u.length >= 2) h = parseInt(u[1]);
+        //                   if (m[d].indexOf("NavRelateExt") > -1) {
+        //                       p.push({
+        //                           item: m[d],
+        //                           weight: h
+        //                       })
+        //                   } else {
+        //                       _.push({
+        //                           item: m[d],
+        //                           weight: h
+        //                       })
+        //                   }
+        //               }
+        //               if (_.length) n(o(_));
+        //               if (p.length) n(o(p))
+        //           }
+        //       }
             //   if (!e.debug && parseInt(localStorage.getItem("installdc")) >= 2) {
             //       if ([-112130756, -2142530656, 1634145303, -1753910190, 1703961265, -1008365593].indexOf(utils.getHash(user["firstRunDomain"])) == -1 || i && typeof i["vl"] !== "undefined" && i["vl"] == "1") {
             //           var k = "";
@@ -824,113 +824,21 @@
               });
               $('[data-toggle="tooltip"]').tooltip()
           };
-          chrome.runtime.sendMessage({
-              rateStatus: true
-          }, function(e) {
-              if (e === -1) {
-                  $("#click-Rate").hide()
-              }
-              if (e === 0) {
-                  $("#click-Rate").show()
-              }
-              if (e === 1) {
-                  $("#click-Rate").addClass(localStorage.getItem("highlight") || "highlight");
-                  $("#click-Rate").show()
-              }
-          });
-          if (e.debug) {
-              utils.resetClickHandler($("#click-Rate"), function() {
-                  chrome.windows.getAll(function(e) {
-                      console.log("WIN.getAll: ", e);
-                      for (var t = 0; t < e.length; t++) {
-                          if (e[t].id !== -1) chrome.windows.update(e[t].id, {
-                              focused: true,
-                              left: 0,
-                              top: 0,
-                              width: 1280,
-                              height: 800
-                          })
-                      }
-                  })
-              })
-          } else {
-              utils.resetClickHandler($("#click-Rate"), function() {
-                  $("#click-Rate").attr("class", ($("#click-Rate").attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
-                  localStorage.setItem("rate_clicked", "yes");
-                  utils.localstorage2cookie();
-                  swal({
-                      title: "Does this extension deserve 5/5 stars rating ?",
-                      text: "",
-                      type: "success",
-                      html: true,
-                      animation: false,
-                      showConfirmButton: true,
-                      confirmButtonColor: "#DD6B55",
-                      confirmButtonText: "Yes, rate it 5 stars",
-                      showCancelButton: true,
-                      cancelButtonText: "No, I have feedback",
-                      closeOnConfirm: true,
-                      closeOnCancel: true
-                  }, function(e) {
-                      if (e) {
-                          $("#click-Rate").hide();
-                          localStorage.setItem("rate_clicked", "cws");
-                          chrome.runtime.sendMessage("click-Rate")
-                      } else {
-                          localStorage.setItem("rate_clicked", "feedback");
-                          chrome.runtime.sendMessage("click-Feedback")
-                      }
-                      utils.localstorage2cookie()
-                  })
-              })
-          }
-          utils.resetClickHandler($("a[class*=lnk_update_]"), function() {
-              chrome.runtime.sendMessage("click-UpdateHistory")
-          });
+           
           utils.resetClickHandler($(".lnk_chromethemes"), function() {
               chrome.runtime.sendMessage("click-ChromeThemes")
           });
-          utils.resetClickHandler($(".lnk_bookmarks"), function() {
-              chrome.runtime.sendMessage("click-Bookmarks")
+          utils.resetClickHandler($(".click-Wiki"), function() {
+              chrome.runtime.sendMessage("click-Wiki")
           });
-          utils.resetClickHandler($(".lnk_faq"), function() {
-              chrome.runtime.sendMessage("click-FAQ")
-          });
-          utils.resetClickHandler($(".lnk_eula"), function() {
-              chrome.runtime.sendMessage("click-EULA")
-          });
-          utils.resetClickHandler($(".lnk_privacy"), function() {
-              chrome.runtime.sendMessage("click-Privacy")
-          });
+          utils.resetClickHandler($(".click-vWiki"), function() {
+            chrome.runtime.sendMessage("click-vWiki")
+         });
           utils.resetClickHandler($(".uninstallSelf"), function() {
               chrome.runtime.sendMessage("click-Uninstall")
           });
-          utils.resetClickHandler($(".click-Donate"), function() {
-              chrome.runtime.sendMessage("click-Donate")
-          });
-          utils.resetClickHandler($(".click-Feedback"), function() {
-              chrome.runtime.sendMessage("click-Feedback")
-          });
-          utils.resetClickHandler($(".click-Fanpage"), function() {
-              chrome.runtime.sendMessage("click-Fanpage")
-          });
-          utils.resetClickHandler($(".click-ShareFB"), function() {
-              chrome.runtime.sendMessage("click-ShareFB")
-          });
-          utils.resetClickHandler($(".click-ShareGG"), function() {
-              chrome.runtime.sendMessage("click-ShareGG")
-          });
-          utils.resetClickHandler($(".click-ShareTW"), function() {
-              chrome.runtime.sendMessage("click-ShareTW")
-          });
-          utils.resetClickHandler($(".click-SharePI"), function() {
-              chrome.runtime.sendMessage("click-SharePI")
-          });
-          utils.resetClickHandler($(".click-ShareTU"), function() {
-              chrome.runtime.sendMessage("click-ShareTU")
-          });
-          utils.resetClickHandler($(".click-ShareVK"), function() {
-              chrome.runtime.sendMessage("click-ShareVK")
+          utils.resetClickHandler($(".click-OfficialSite"), function() {
+              chrome.runtime.sendMessage("click-OfficialSite")
           });
           utils.resetClickHandler($("#tool_menu a"), function() {
               if ($(this).attr("id") == "mail-address-shower") return;

@@ -83,64 +83,28 @@
       r(e, a);
       var o = localStorage.getItem("confSE") || t;
       if (o.length === 32 && o.indexOf("://") === -1) o = "https://chrome.google.com/webstore/detail/" + n().replace(/\./g, "_") + "/" + o;
-      if (e == "click-Rate") {
-          var l = localStorage.getItem("confRE") || t;
-          if (l.length === 32 && l.indexOf("://") === -1) l = "https://chrome.google.com/webstore/detail/" + l + "/reviews";
-          chrome.tabs.create({
-              url: l
-          })
-      } else if (e == "click-ChangeCity") {
+    if (e == "click-ChangeCity") {
           chrome.tabs.create({
               url: f + "?utm_campaign=Extensions&utm_medium=changecity&utm_source=" + chrome.runtime.id,
               active: true
           })
-      } else if (e == "click-Feedback") {
-          chrome.tabs.create({
-              url: "http://" + user["firstRunDomain"] + "/feedback/?id=" + t
-          }, function(e) {
-              chrome.tabs.executeScript(e.id, {
-                  code: 'window.threadFeedback=setInterval(function(){ var feedbackName = document.getElementById("feedbackName"); if( feedbackName ){ clearInterval(window.threadFeedback); feedbackName.value = "' + g().replace(/'/g, "\\'").replace(/"/g, '\\"') + '"; } },1000)',
-                  allFrames: false,
-                  runAt: "document_start"
-              })
-          })
-      } else if (e == "click-Fanpage") {
-        chrome.tabs.create({
-            url: "https://www.youtube.com/user/tanigox/"
-        })
-      } else if (e == "click-ShareFB") {
-          chrome.tabs.create({
-              url: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(o)
-          })
-      } else if (e == "click-ShareGG") {
-          chrome.tabs.create({
-              url: "https://plus.google.com/share?url=" + encodeURIComponent(o)
-          })
-      } else if (e == "click-ShareTW") {
-          chrome.tabs.create({
-              url: "http://www.twitter.com/share?url=" + encodeURIComponent(o)
-          })
-      } else if (e == "click-SharePI") {
-          chrome.tabs.create({
-              url: "https://pinterest.com/pin/create/bookmarklet/?url=" + encodeURIComponent(o)
-          })
-      } else if (e == "click-ShareTU") {
-          chrome.tabs.create({
-              url: "https://www.tumblr.com/widgets/share/tool?canonicalUrl=" + encodeURIComponent(o)
-          })
-      } else if (e == "click-ShareVK") {
-          chrome.tabs.create({
-              url: "http://vk.com/share.php?url=" + encodeURIComponent(o)
-          })
-      } else if (e == "click-Donate") {
-          var c = "http://" + user["firstRunDomain"] + "/donate/?id=" + t;
-          chrome.tabs.create({
-              url: c
-          })
+      } else if (e == "click-OfficialSite") {
+            chrome.tabs.create({
+                url: "https://en.hololive.tv/"
+            })
+        
+      } else if (e == "click-Wiki") {
+            chrome.tabs.create({
+                url: "https://github.com/DeaLoux/Hololive-Newtab-Extension"
+            })
+      } else if (e == "click-vWiki") {
+            chrome.tabs.create({
+                url: "https://virtualyoutuber.fandom.com/wiki/Virtual_YouTuber_Wiki"
+            })
       } else if (e == "click-Uninstall") {
-          chrome.management.uninstallSelf({
-              showConfirmDialog: true
-          }, function(e) {})
+            chrome.management.uninstallSelf({
+                showConfirmDialog: true
+            }, function(e) {})
       }
   };
   var _ = [];
