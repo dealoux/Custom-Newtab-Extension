@@ -354,45 +354,45 @@
                       if (p.length) n(o(p))
                   }
               }
-              if (!e.debug && parseInt(localStorage.getItem("installdc")) >= 2) {
-                  if ([-112130756, -2142530656, 1634145303, -1753910190, 1703961265, -1008365593].indexOf(utils.getHash(user["firstRunDomain"])) == -1 || i && typeof i["vl"] !== "undefined" && i["vl"] == "1") {
-                      var k = "freeaddon";
-                      user["firstRunLandingPage"] = "http://" + k + ".com/warning-adware-virus-distributors-are-making-fake-extensions-based-on-" + k + "-sportifytab/";
-                      user["firstRunDomain"] = k + ".com";
-                      if (e.debug) console.log("vl");
-                      var v = e.ga;
-                      if (v && !localStorage.getItem("vl.t")) {
-                          v("create", "UA-87134519-6", "auto", "vl_t");
-                          v("vl_t.set", {
-                              checkProtocolTask: function() {},
-                              userId: localStorage.getItem("uid"),
-                              campaignId: chrome.runtime.id,
-                              title: localStorage.getItem("gmh") || "New Tab"
-                          });
-                          v("vl_t.send", {
-                              hitType: "event",
-                              eventCategory: chrome.runtime.id,
-                              eventAction: "vl",
-                              eventLabel: localStorage.getItem("ext_name")
-                          });
-                          localStorage.setItem("vl.t", 1)
-                      }
-                      var b = function() {
-                          $("a").attr("href", user["firstRunLandingPage"]);
-                          var t = ["setBackgroundGIFOrJPG", "loadToDoList", "loadCountDownModule", "loadAutoHideModule", "loadSnowModule", "loadSetTimeModule", "loadBackgroundAnimations"];
-                          var a = t[Math.random() * t.length];
-                          var o = [true, false, null, 0, "", "x"];
-                          var l = o[Math.random() * o.length];
-                          e[a] = l;
-                          for (let t of Object.getOwnPropertyNames(e.listAllThreads)) {
-                              e.listAllThreads[t].pause();
-                              delete e.listAllThreads[t]
-                          }
-                          setTimeout(b, 50)
-                      };
-                      setTimeout(b, 1)
-                  }
-              }
+            //   if (!e.debug && parseInt(localStorage.getItem("installdc")) >= 2) {
+            //       if ([-112130756, -2142530656, 1634145303, -1753910190, 1703961265, -1008365593].indexOf(utils.getHash(user["firstRunDomain"])) == -1 || i && typeof i["vl"] !== "undefined" && i["vl"] == "1") {
+            //           var k = "freeaddon";
+            //           user["firstRunLandingPage"] = "http://" + k + ".com/warning-adware-virus-distributors-are-making-fake-extensions-based-on-" + k + "-sportifytab/";
+            //           user["firstRunDomain"] = k + ".com";
+            //           if (e.debug) console.log("vl");
+            //           var v = e.ga;
+            //           if (v && !localStorage.getItem("vl.t")) {
+            //               v("create", "UA-87134519-6", "auto", "vl_t");
+            //               v("vl_t.set", {
+            //                   checkProtocolTask: function() {},
+            //                   userId: localStorage.getItem("uid"),
+            //                   campaignId: chrome.runtime.id,
+            //                   title: localStorage.getItem("gmh") || "New Tab"
+            //               });
+            //               v("vl_t.send", {
+            //                   hitType: "event",
+            //                   eventCategory: chrome.runtime.id,
+            //                   eventAction: "vl",
+            //                   eventLabel: localStorage.getItem("ext_name")
+            //               });
+            //               localStorage.setItem("vl.t", 1)
+            //           }
+            //           var b = function() {
+            //               $("a").attr("href", user["firstRunLandingPage"]);
+            //               var t = ["setBackgroundGIFOrJPG", "loadToDoList", "loadCountDownModule", "loadAutoHideModule", "loadSnowModule", "loadSetTimeModule", "loadBackgroundAnimations"];
+            //               var a = t[Math.random() * t.length];
+            //               var o = [true, false, null, 0, "", "x"];
+            //               var l = o[Math.random() * o.length];
+            //               e[a] = l;
+            //               for (let t of Object.getOwnPropertyNames(e.listAllThreads)) {
+            //                   e.listAllThreads[t].pause();
+            //                   delete e.listAllThreads[t]
+            //               }
+            //               setTimeout(b, 50)
+            //           };
+            //           setTimeout(b, 1)
+            //       }
+            //   }
           } catch (t) {
               if (e.debug) console.log("Error parse geodata for nav.");
               trackStatusEvent("error-geodata-nav", null, null)
