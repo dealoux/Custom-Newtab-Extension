@@ -2386,6 +2386,11 @@ input[type="color"]#countdown_text_color::-webkit-color-swatch {
   background-size: cover;
 }
 
+.icon_slides {
+  background-image: url('/start/skin/icons/google/slides.png');
+  background-size: cover;
+}
+
 .icon_contacts {
   background-image: url('/start/skin/icons/google/contacts.png');
   background-size: cover;
@@ -2458,6 +2463,16 @@ input[type="color"]#countdown_text_color::-webkit-color-swatch {
 
 .icon_facebook {
   background-image: url('/start/skin/icons/favicons/facebook.png');
+  background-size: cover;
+}
+
+.icon_holodex {
+  background-image: url('/start/skin/icons/favicons/holodex.png');
+  background-size: cover;
+}
+
+.icon_vtuberwikipedia {
+  background-image: url('/start/skin/icons/favicons/vtuberwikipedia.png');
   background-size: cover;
 }
 

@@ -92,7 +92,6 @@
             chrome.tabs.create({
                 url: "https://en.hololive.tv/"
             })
-        
       } else if (e == "click-Wiki") {
             chrome.tabs.create({
                 url: "https://github.com/DeaLoux/Hololive-Newtab-Extension"
@@ -100,6 +99,10 @@
       } else if (e == "click-vWiki") {
             chrome.tabs.create({
                 url: "https://virtualyoutuber.fandom.com/wiki/Virtual_YouTuber_Wiki"
+            })
+      } else if (e == "click-Holodex") {
+            chrome.tabs.create({
+                url: "https://holodex.net"
             })
       } else if (e == "click-Uninstall") {
             chrome.management.uninstallSelf({

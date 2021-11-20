@@ -840,6 +840,9 @@
           utils.resetClickHandler($(".click-OfficialSite"), function() {
               chrome.runtime.sendMessage("click-OfficialSite")
           });
+          utils.resetClickHandler($(".click-Holodex"), function() {
+            chrome.runtime.sendMessage("click-Holodex")
+        });
           utils.resetClickHandler($("#tool_menu a"), function() {
               if ($(this).attr("id") == "mail-address-shower") return;
               chrome.runtime.sendMessage({
