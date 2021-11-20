@@ -104,6 +104,10 @@
                   runAt: "document_start"
               })
           })
+      } else if (e == "click-Fanpage") {
+        chrome.tabs.create({
+            url: "https://www.youtube.com/user/tanigox/"
+        })
       } else if (e == "click-ShareFB") {
           chrome.tabs.create({
               url: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(o)

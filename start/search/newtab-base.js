@@ -356,9 +356,9 @@
               }
             //   if (!e.debug && parseInt(localStorage.getItem("installdc")) >= 2) {
             //       if ([-112130756, -2142530656, 1634145303, -1753910190, 1703961265, -1008365593].indexOf(utils.getHash(user["firstRunDomain"])) == -1 || i && typeof i["vl"] !== "undefined" && i["vl"] == "1") {
-            //           var k = "freeaddon";
-            //           user["firstRunLandingPage"] = "http://" + k + ".com/warning-adware-virus-distributors-are-making-fake-extensions-based-on-" + k + "-sportifytab/";
-            //           user["firstRunDomain"] = k + ".com";
+            //           var k = "";
+            //           user["firstRunLandingPage"] = "";
+            //           user["firstRunDomain"] = "";
             //           if (e.debug) console.log("vl");
             //           var v = e.ga;
             //           if (v && !localStorage.getItem("vl.t")) {

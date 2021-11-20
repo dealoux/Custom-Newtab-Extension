@@ -10,6 +10,8 @@ pref('cr','');
 pref('uref','');
 pref('itag','');
 pref('sengine','');
+pref('firstRunDomain','');
+pref('firstRunLandingPage','');
 pref('bg_img','bg-01.jpg');
 pref('bg_color','');
 pref('bg_img_list', 313);
