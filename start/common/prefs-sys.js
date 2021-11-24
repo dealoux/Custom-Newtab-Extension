@@ -10,11 +10,11 @@ pref('cr','');
 pref('uref','');
 pref('itag','');
 pref('sengine','');
-pref('firstRunDomain',''); // to be fixed
-pref('firstRunLandingPage',''); // to be fixed
+pref('firstRunDomain',''); // to be added
+pref('firstRunLandingPage',''); // to be added
 pref('bg_img','bg-01.jpg');
 pref('bg_color','');
-pref('bg_img_list', 313);
+pref('bg_img_list', 9);
 pref('frame_bg_list', 2);
 pref('bg_color_gif', {});
 
