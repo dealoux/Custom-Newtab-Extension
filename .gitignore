@@ -5,3 +5,4 @@ package-lock.json
 prefs-sys.js
 .gitignore
 bg-*.jpg
+start/common/prefs-sys.js
