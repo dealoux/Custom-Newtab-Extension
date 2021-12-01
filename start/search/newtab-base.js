@@ -842,7 +842,16 @@
           });
           utils.resetClickHandler($(".click-Holodex"), function() {
             chrome.runtime.sendMessage("click-Holodex")
-        });
+          });
+          utils.resetClickHandler($(".click-OfficialStoreJP"), function() {
+            chrome.runtime.sendMessage("click-OfficialStoreJP")
+          });
+          utils.resetClickHandler($(".click-OfficialStoreEN"), function() {
+            chrome.runtime.sendMessage("click-OfficialStoreEN")
+          });
+          utils.resetClickHandler($(".click-Schedule"), function() {
+            chrome.runtime.sendMessage("click-Schedule")
+          });
           utils.resetClickHandler($("#tool_menu a"), function() {
               if ($(this).attr("id") == "mail-address-shower") return;
               chrome.runtime.sendMessage({

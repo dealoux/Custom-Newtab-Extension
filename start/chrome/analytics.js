@@ -92,6 +92,14 @@
             chrome.tabs.create({
                 url: "https://en.hololive.tv/"
             })
+      } else if (e == "click-OfficialStoreJP") {
+            chrome.tabs.create({
+                url: "https://shop.hololivepro.com/"
+            })
+      } else if (e == "click-OfficialStoreEN") {
+            chrome.tabs.create({
+                url: "https://shop.geekjack.net/pages/hololive"
+            })        
       } else if (e == "click-Wiki") {
             chrome.tabs.create({
                 url: "https://github.com/DeaLoux/Hololive-Newtab-Extension"
@@ -103,6 +111,10 @@
       } else if (e == "click-Holodex") {
             chrome.tabs.create({
                 url: "https://holodex.net"
+            })
+      } else if (e == "click-Schedule") {
+            chrome.tabs.create({
+                url: "https://schedule.hololive.tv/lives"
             })
       } else if (e == "click-Uninstall") {
             chrome.management.uninstallSelf({
