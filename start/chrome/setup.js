@@ -1,5 +1,52 @@
 (function(e) {
   "use strict";
+
+	 // Function to retrieve settings from storage
+	 function getSetting(key) {
+    // Try retrieving from sessionStorage first
+    var value = sessionStorage.getItem(key);
+    if (value === null) {
+      // If not found in sessionStorage, retrieve from localStorage
+      value = localStorage.getItem(key);
+    }
+    return value;
+  }
+
+  // Function to set default settings
+  function setDefaultSettings() {
+    // Default settings
+    var defaultSettings = {
+      "shuffle_background": "yes",
+      "shuffle_favorites": "no",
+      "random_all_newtab": "yes",
+      "enable_slideshow": "yes",
+      "slideshow_timer": "3600",
+      "units_weather": "metric",
+      "bg_animation": "fadeIn",
+      "disable_weather": "yes",
+      "hideTodoPanel": "yes",
+      "enable_todo": "no"
+    };
+
+    // Set default settings if not already set
+    for (var key in defaultSettings) {
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, defaultSettings[key]);
+      }
+    }
+  }
+
+  // Set default settings initially
+  setDefaultSettings();
+
+  // Listen for windows creation
+  browser.windows.onCreated.addListener(function(windowInfo) {
+    if (windowInfo.incognito) {
+      // For private windows, set default settings when the window is created
+      setDefaultSettings();
+    }
+  });
+
   var t = localStorage.getItem("user_group") || Math.floor(Math.random() * 10) + 1;
   localStorage.setItem("user_group", t);
   localStorage.setItem("newtab_url", browser.runtime.getURL("/start/index.html"));
@@ -16,7 +63,7 @@
   var o = utils.set;
   localStorage["setting_geo"] = (new Date).getTime();
   var n = 0;
-  var r = null;
+  var r = null;	
 
   function l() {
       if (r) clearTimeout(r);
@@ -81,18 +128,6 @@
           if (e.debug) console.log("error geolocator: ", t, arguments)
       })
   }
-
-  // default settings
-  localStorage.setItem("shuffle_background", "yes");
-  localStorage.setItem("shuffle_favorites", "no");
-  localStorage.setItem("random_all_newtab", "yes");
-  localStorage.setItem("enable_slideshow", "yes");
-  localStorage.setItem("slideshow_timer", "3600");
-  localStorage.setItem("units_weather", "metric");
-  localStorage.setItem("bg_animation", "fadeIn"); 
-  localStorage.setItem("disable_weather", "yes");
-  localStorage.setItem("hideTodoPanel", "yes");
-  localStorage.setItem("enable_todo", "no");
 
   function i(e) {
       var t = {
