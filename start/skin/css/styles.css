@@ -2381,6 +2381,11 @@ input[type="color"]#countdown_text_color::-webkit-color-swatch {
   background-size: cover;
 }
 
+.icon_outlook {
+  background-image: url('/start/skin/icons/favicons/outlook.png');
+  background-size: cover;
+}
+
 .icon_documents {
   background-image: url('/start/skin/icons/google/docs.png');
   background-size: cover;

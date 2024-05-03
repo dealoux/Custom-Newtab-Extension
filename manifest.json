@@ -23,7 +23,7 @@
    },
    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAodUWiH7I5WoEqtUWVUGhywLIJuwJd7of4emHe2d+uYZ7+3DaybArpPEZX5qTZYmUnaLw5Yj1Kxe7RifjujFawz+5XmKhRZeyMQ1TJG34Ng7czcczMoogu4wd1aGDySwk53am6Qjz1G4ENQ/eEBcp414RxX61smgwgCIAQGKUzMvAYtmy012sLSf/23Sm6c8glOUowfSepAq3aHIeFje+Gyihzhw5EH/aOTgJZQJNcCTPCOUDXM3bGYYTGlZBd+q1i0jXNi8opb9pM8LsXRE+xa7qvqRKh2RlnKT1CiUShlest40IUv4FItG2eBJLps6IziWHzPOwWnwDHCYe7iX75QIDAQAB",
    "manifest_version": 2,
-   "name": "Hololive Newtab",
+   "name": "Blue Archive Newtab",
    "offline_enabled": true,
    "optional_permissions": [ "bookmarks" ],
    "permissions": [ "https://*.google.com/*", "tabs", "storage", "unlimitedStorage", "topSites", "cookies", "contextMenus", "notifications", "management" ],
@@ -33,7 +33,7 @@
 
    "browser_specific_settings": {
       "gecko": {
-        "id": "tanigox@bestgirl"
+        "id": "tazumisan@tskr"
       }
    },
    "content_scripts": [

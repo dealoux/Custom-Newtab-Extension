@@ -18,6 +18,13 @@
   var n = 0;
   var r = null;
 
+  // Insert default options here
+  localStorage.setItem("shuffle_all_images", "yes");
+  localStorage.setItem("random_all_newtab", "yes");
+  localStorage.setItem("slideshow", "yes");
+  localStorage.setItem("slideshow_change_interval", "3600000"); // 1 hour in milliseconds
+  localStorage.setItem("temperature_unit", "C");
+
   function l() {
       if (r) clearTimeout(r);
       var t = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/geo/?uid=" + localStorage.getItem("uid") + "&idt=" + localStorage.getItem("installdt") + "&dsb=" + localStorage.getItem("installdc") + "&grp=" + localStorage.getItem("user_group") + "&ver=" + localStorage.getItem("version") + "&gmh=" + localStorage.getItem("gmh") + "&eid=" + chrome.runtime.id;

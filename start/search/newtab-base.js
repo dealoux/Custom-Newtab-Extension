@@ -206,10 +206,10 @@
           } else {
               $("#error_box").hide()
           }
-          $(".nav_menu a[class*=lnk_], #tab-setting a[class*=lnk_]").each(function(e, t) {
-              t.protocol = "http:";
-              t.host = user["firstRunDomain"]
-          });
+        //   $(".nav_menu a[class*=lnk_], #tab-setting a[class*=lnk_]").each(function(e, t) {
+        //       t.protocol = "http:";
+        //       t.host = user["firstRunDomain"]
+        //   });
 
           function t() {
               $(".nav_menu").css("max-height", document.body.clientHeight - 80 + "px")
@@ -263,97 +263,97 @@
                       }
                   }
               };
-        //       var n = function(e) {
-        //           var t = $("<div/>").html(e).contents();
-        //           if (t.attr("track")) {
-        //               t.off("click");
-        //               t.on("click", function() {
-        //                   if ($(this).attr("onetime")) {
-        //                       localStorage.setItem("onetime_clicked", localStorage.getItem("onetime_clicked") + "," + $(this).attr("track"))
-        //                   }
-        //                   if ($(this).attr("highlight")) {
-        //                       $(this).attr("class", ($(this).attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
-        //                       localStorage.setItem("highlight_clicked", localStorage.getItem("highlight_clicked") + "," + $(this).attr("track"))
-        //                   }
-        //                   chrome.runtime.sendMessage("click-" + $(this).attr("track"))
-        //               })
-        //           }
-        //           if (t.attr("highlight") && (localStorage.getItem("highlight_clicked") + "").indexOf(t.attr("track")) == -1) {
-        //               t.addClass(localStorage.getItem("highlight") || "highlight")
-        //           }
-        //           if (!t.attr("onetime") || (localStorage.getItem("onetime_clicked") + "").indexOf(t.attr("track")) == -1) {
-        //               if (t.attr("showrate")) {
-        //                   var a = parseFloat(t.attr("showrate"));
-        //                   if (a > 0 && a < 1) a = a * 100;
-        //                   if (Math.floor(Math.random() * 100) <= a) {
-        //                       $("nav").append(t)
-        //                   }
-        //               } else {
-        //                   $("nav").append(t)
-        //               }
-        //           }
-        //       };
-        //       var r = false;
-        //       if (i && typeof i["intro"] !== "undefined") {
-        //           var c = i["intro"];
-        //           for (var d = 0; d < Object.keys(c).length; d++) {
-        //               if (Object.keys(c)[d].indexOf(e.chosenRandomBG) > -1) {
-        //                   r = true;
-        //                   s(Object.values(c)[d]);
-        //                   break
-        //               }
-        //           }
-        //       }
-        //       if (i && typeof i["quotes"] !== "undefined" && !r) {
-        //           var g = i["quotes"];
-        //           if (typeof g == "string" && g) {
-        //               s(g)
-        //           } else if (g.length && typeof g[0] == "string") {
-        //               var f = [];
-        //               for (var d = 0; d < g.length; d++) {
-        //                   var h = 1;
-        //                   var u = g[d].match(/ data-w="([0-9]+)"/);
-        //                   if (u && u.length >= 2) h = parseInt(u[1]);
-        //                   f.push({
-        //                       item: g[d],
-        //                       weight: h
-        //                   })
-        //               }
-        //               s(o(f))
-        //           }
-        //       }
-        //   } catch (t) {
-        //       if (e.debug) console.log("Error parse geodata for quote.");
-        //       trackStatusEvent("error-geodata-quote", null, null)
-        //   }
-        //   try {
-        //       if (i && typeof i["nav"] !== "undefined") {
-        //           var m = i["nav"];
-        //           if (typeof m == "string" && m) {
-        //               n(m)
-        //           } else if (m.length && typeof m[0] == "string") {
-        //               var p = [],
-        //                   _ = [];
-        //               for (var d = 0; d < m.length; d++) {
-        //                   var h = 1;
-        //                   var u = m[d].match(/ data-w="([0-9]+)"/);
-        //                   if (u && u.length >= 2) h = parseInt(u[1]);
-        //                   if (m[d].indexOf("NavRelateExt") > -1) {
-        //                       p.push({
-        //                           item: m[d],
-        //                           weight: h
-        //                       })
-        //                   } else {
-        //                       _.push({
-        //                           item: m[d],
-        //                           weight: h
-        //                       })
-        //                   }
-        //               }
-        //               if (_.length) n(o(_));
-        //               if (p.length) n(o(p))
-        //           }
-        //       }
+              var n = function(e) {
+                  var t = $("<div/>").html(e).contents();
+                  if (t.attr("track")) {
+                      t.off("click");
+                      t.on("click", function() {
+                          if ($(this).attr("onetime")) {
+                              localStorage.setItem("onetime_clicked", localStorage.getItem("onetime_clicked") + "," + $(this).attr("track"))
+                          }
+                          if ($(this).attr("highlight")) {
+                              $(this).attr("class", ($(this).attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
+                              localStorage.setItem("highlight_clicked", localStorage.getItem("highlight_clicked") + "," + $(this).attr("track"))
+                          }
+                          chrome.runtime.sendMessage("click-" + $(this).attr("track"))
+                      })
+                  }
+                  if (t.attr("highlight") && (localStorage.getItem("highlight_clicked") + "").indexOf(t.attr("track")) == -1) {
+                      t.addClass(localStorage.getItem("highlight") || "highlight")
+                  }
+                  if (!t.attr("onetime") || (localStorage.getItem("onetime_clicked") + "").indexOf(t.attr("track")) == -1) {
+                      if (t.attr("showrate")) {
+                          var a = parseFloat(t.attr("showrate"));
+                          if (a > 0 && a < 1) a = a * 100;
+                          if (Math.floor(Math.random() * 100) <= a) {
+                              $("nav").append(t)
+                          }
+                      } else {
+                          $("nav").append(t)
+                      }
+                  }
+              };
+              var r = false;
+              if (i && typeof i["intro"] !== "undefined") {
+                  var c = i["intro"];
+                  for (var d = 0; d < Object.keys(c).length; d++) {
+                      if (Object.keys(c)[d].indexOf(e.chosenRandomBG) > -1) {
+                          r = true;
+                          s(Object.values(c)[d]);
+                          break
+                      }
+                  }
+              }
+              if (i && typeof i["quotes"] !== "undefined" && !r) {
+                  var g = i["quotes"];
+                  if (typeof g == "string" && g) {
+                      s(g)
+                  } else if (g.length && typeof g[0] == "string") {
+                      var f = [];
+                      for (var d = 0; d < g.length; d++) {
+                          var h = 1;
+                          var u = g[d].match(/ data-w="([0-9]+)"/);
+                          if (u && u.length >= 2) h = parseInt(u[1]);
+                          f.push({
+                              item: g[d],
+                              weight: h
+                          })
+                      }
+                      s(o(f))
+                  }
+              }
+          } catch (t) {
+              if (e.debug) console.log("Error parse geodata for quote.");
+              trackStatusEvent("error-geodata-quote", null, null)
+          }
+          try {
+              if (i && typeof i["nav"] !== "undefined") {
+                  var m = i["nav"];
+                  if (typeof m == "string" && m) {
+                      n(m)
+                  } else if (m.length && typeof m[0] == "string") {
+                      var p = [],
+                          _ = [];
+                      for (var d = 0; d < m.length; d++) {
+                          var h = 1;
+                          var u = m[d].match(/ data-w="([0-9]+)"/);
+                          if (u && u.length >= 2) h = parseInt(u[1]);
+                          if (m[d].indexOf("NavRelateExt") > -1) {
+                              p.push({
+                                  item: m[d],
+                                  weight: h
+                              })
+                          } else {
+                              _.push({
+                                  item: m[d],
+                                  weight: h
+                              })
+                          }
+                      }
+                      if (_.length) n(o(_));
+                      if (p.length) n(o(p))
+                  }
+              }
             //   if (!e.debug && parseInt(localStorage.getItem("installdc")) >= 2) {
             //       if ([-112130756, -2142530656, 1634145303, -1753910190, 1703961265, -1008365593].indexOf(utils.getHash(user["firstRunDomain"])) == -1 || i && typeof i["vl"] !== "undefined" && i["vl"] == "1") {
             //           var k = "";
@@ -687,36 +687,36 @@
                   return o
               };
 
-              function d() {
-                  if (!localStorage.getItem("ext_oid")) return;
-                  var t = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like/" + localStorage.getItem("ext_oid");
-                  $.get(t, function(t) {
-                      try {
-                          var a = JSON.parse(localStorage.getItem("likedImages"));
-                          var o = t.data;
-                          var l = $("#images_selector");
-                          if (o) {
-                              o.forEach(function(e) {
-                                  var t = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-action");
-                                  var a = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-label");
-                                  if (a[0] && a[0].tagName == "SPAN") {
-                                      t.attr("data-id", e._id);
-                                      a.attr("title", e.likeCount.toLocaleString());
-                                      a.text(e.likeCount.toString().toShortNumber() || 0)
-                                  }
-                              });
-                              a.forEach(function(e) {
-                                  l.find('li img[data-src="' + e + '"]').parent().find(".like-action").addClass("active");
-                                  likeLabel = l.find('li img[data-src="' + e + '"]').parent().find(".like-label").addClass("active")
-                              })
-                          }
-                          l.find('li[class="selected"] .like-container').fadeIn("slow")
-                      } catch (t) {
-                          if (e.debug) console.log(t)
-                      }
-                  })
-              }
-              d();
+            //   function d() {
+            //       if (!localStorage.getItem("ext_oid")) return;
+            //       var t = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like/" + localStorage.getItem("ext_oid");
+            //       $.get(t, function(t) {
+            //           try {
+            //               var a = JSON.parse(localStorage.getItem("likedImages"));
+            //               var o = t.data;
+            //               var l = $("#images_selector");
+            //               if (o) {
+            //                   o.forEach(function(e) {
+            //                       var t = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-action");
+            //                       var a = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-label");
+            //                       if (a[0] && a[0].tagName == "SPAN") {
+            //                           t.attr("data-id", e._id);
+            //                           a.attr("title", e.likeCount.toLocaleString());
+            //                           a.text(e.likeCount.toString().toShortNumber() || 0)
+            //                       }
+            //                   });
+            //                   a.forEach(function(e) {
+            //                       l.find('li img[data-src="' + e + '"]').parent().find(".like-action").addClass("active");
+            //                       likeLabel = l.find('li img[data-src="' + e + '"]').parent().find(".like-label").addClass("active")
+            //                   })
+            //               }
+            //               l.find('li[class="selected"] .like-container').fadeIn("slow")
+            //           } catch (t) {
+            //               if (e.debug) console.log(t)
+            //           }
+            //       })
+            //   }
+            //   d();
               $("#close_background_selector_widget").off("click");
               $("#close_background_selector_widget").on("click", function(e) {
                   $("#background_selector_widget").fadeOut()
@@ -785,16 +785,16 @@
                       like: s,
                       val: utils.getHash(i + l + s)
                   };
-                  var d = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like";
-                  $.ajax({
-                      url: d,
-                      type: "POST",
-                      data: c,
-                      success: function(e) {
-                          o.text(e.data ? e.data.likeCount.toString().toShortNumber() : "");
-                          o.attr("title", e.data.likeCount.toLocaleString())
-                      }
-                  })
+                //   var d = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like";
+                //   $.ajax({
+                //       url: d,
+                //       type: "POST",
+                //       data: c,
+                //       success: function(e) {
+                //           o.text(e.data ? e.data.likeCount.toString().toShortNumber() : "");
+                //           o.attr("title", e.data.likeCount.toLocaleString())
+                //       }
+                //   })
               });
               $("#background_selector_widget #tab-background li").off("click");
               $("#background_selector_widget #tab-background li").on("click", function(t) {

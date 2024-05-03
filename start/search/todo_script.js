@@ -115,30 +115,33 @@ window.loadToDoList = function() {
   $(".todo-panel").hide();
   $(".todo_list ul").empty();
   todoList = updateTodoList();
-  todoList.forEach(e => {
-      let o = e.id;
-      let i = e.value;
-      let a = e.status;
-      let d = e.reminder;
-      let n = $("<li>");
-      n.attr("data-id", o);
-      n.html(`<input type="checkbox" id="${o}" class="markDone"><label for="${o}">${i}</label><i class="dl_btn" dl-for="${o}"></i>`);
-      n.css({
-          display: "none"
-      });
-      if (a !== "checked") {
-          n.append(t(i, o, d))
-      }
-      $(".todo_list ul").append(n);
-      n.fadeIn();
-      if (a === "checked") {
-          $(`#${o}`).prop("checked", true);
-          $(`#${o}`).next("label").css({
-              "text-decoration": "line-through",
-              opacity: ".5"
-          })
-      }
-  });
+
+  if(Array.isArray(todoList)) {
+  	todoList.forEach(e => {
+  	    let o = e.id;
+  	    let i = e.value;
+  	    let a = e.status;
+  	    let d = e.reminder;
+  	    let n = $("<li>");
+  	    n.attr("data-id", o);
+  	    n.html(`<input type="checkbox" id="${o}" class="markDone"><label for="${o}">${i}</label><i class="dl_btn" dl-for="${o}"></i>`);
+  	    n.css({
+  	        display: "none"
+  	    });
+  	    if (a !== "checked") {
+  	        n.append(t(i, o, d))
+  	    }
+  	    $(".todo_list ul").append(n);
+  	    n.fadeIn();
+  	    if (a === "checked") {
+  	        $(`#${o}`).prop("checked", true);
+  	        $(`#${o}`).next("label").css({
+  	            "text-decoration": "line-through",
+  	            opacity: ".5"
+  	        })
+  	    }
+  	});
+	}
   a();
   var o = function(e) {
       $(".todo_list li").removeClass("todo_selected");
