@@ -82,6 +82,18 @@
       })
   }
 
+  // default settings
+  localStorage.setItem("shuffle_background", "yes");
+  localStorage.setItem("shuffle_favorites", "no");
+  localStorage.setItem("random_all_newtab", "yes");
+  localStorage.setItem("enable_slideshow", "yes");
+  localStorage.setItem("slideshow_timer", "3600");
+  localStorage.setItem("units_weather", "metric");
+  localStorage.setItem("bg_animation", "fadeIn"); 
+  localStorage.setItem("disable_weather", "yes");
+  localStorage.setItem("hideTodoPanel", "yes");
+  localStorage.setItem("enable_todo", "no");
+
   function i(e) {
       var t = {
           woeid: e.woeid

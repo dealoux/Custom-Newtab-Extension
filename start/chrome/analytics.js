@@ -373,7 +373,7 @@
           localStorage.removeItem("disable_todo")
       }
       if (!localStorage.getItem("enable_slideshow")) {
-          localStorage.setItem("enable_slideshow", "no")
+          localStorage.setItem("enable_slideshow", "yes")
       }
       if (!localStorage.getItem("hideTodoPanel")) {
           localStorage.setItem("hideTodoPanel", "yes")
@@ -444,7 +444,7 @@
           localStorage.setItem("had_wl", "[]")
       }
       if (!localStorage.getItem("random_all_newtab")) {
-          localStorage.setItem("random_all_newtab", "no")
+          localStorage.setItem("random_all_newtab", "yes")
       }
       if (!localStorage.getItem("last_opened")) {
           localStorage.setItem("last_opened", (new Date).getTime())
