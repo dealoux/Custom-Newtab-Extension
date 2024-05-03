@@ -11,7 +11,7 @@
   var c = function() {
       var e = document.getElementsByClassName("entry-title");
       if (e) {
-          e[0].innerHTML = "Update for " + chrome.i18n.getMessage("extName")
+          e[0].innerHTML = "Update for " + browser.i18n.getMessage("extName")
       }
   };
   var i = function(t, n) {
@@ -30,14 +30,14 @@
   };
   var s = function() {
       var e = document.getElementById("wcc-new-city").value;
-      chrome.runtime.sendMessage({
+      browser.runtime.sendMessage({
           type: "weather_location_request",
           info: {
               enteredLocation: e
           }
       })
   };
-  chrome.runtime.onMessage.addListener(function(n, s) {
+  browser.runtime.onMessage.addListener(function(n, s) {
       if (n.debug) e.debug = n.debug;
       if (e.debug) console.log("message: ", n);
       if (e.debug) console.log("sender: ", s);

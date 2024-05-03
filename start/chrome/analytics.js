@@ -1,6 +1,6 @@
 (function(e) {
-  var t = chrome.runtime.id;
-  var a = chrome.i18n.getMessage("extName");
+  var t = browser.runtime.id;
+  var a = browser.i18n.getMessage("extName");
   var o = function(t) {
       if (e.debug) console.log("ga: send pageview " + t);
       ga("send", "pageview", t)
@@ -64,12 +64,12 @@
   };
 
   function n() {
-      var e = chrome.runtime.getManifest();
+      var e = browser.runtime.getManifest();
       return e.version
   }
 
   function g() {
-      var e = chrome.runtime.getManifest();
+      var e = browser.runtime.getManifest();
       return e.name
   }
   var m = user["firstRunDomain"];
@@ -84,66 +84,66 @@
       var o = localStorage.getItem("confSE") || t;
       if (o.length === 32 && o.indexOf("://") === -1) o = "https://chrome.google.com/webstore/detail/" + n().replace(/\./g, "_") + "/" + o;
     if (e == "click-ChangeCity") {
-          chrome.tabs.create({
-              url: f + "?utm_campaign=Extensions&utm_medium=changecity&utm_source=" + chrome.runtime.id,
+          browser.tabs.create({
+              url: f + "?utm_campaign=Extensions&utm_medium=changecity&utm_source=" + browser.runtime.id,
               active: true
           })
       } else if (e == "click-OfficialSite") {
-            chrome.tabs.create({
+            browser.tabs.create({
                 url: "https://en.hololive.tv/"
             })
       } else if (e == "click-OfficialStoreJP") {
-            chrome.tabs.create({
+            browser.tabs.create({
                 url: "https://shop.hololivepro.com/"
             })
       } else if (e == "click-OfficialStoreEN") {
-            chrome.tabs.create({
+            browser.tabs.create({
                 url: "https://shop.geekjack.net/pages/hololive"
             })        
       } else if (e == "click-Wiki") {
-            chrome.tabs.create({
+            browser.tabs.create({
                 url: "https://github.com/DeaLoux/Hololive-Newtab-Extension"
             })
       } else if (e == "click-vWiki") {
-            chrome.tabs.create({
+            browser.tabs.create({
                 url: "https://virtualyoutuber.fandom.com/wiki/Virtual_YouTuber_Wiki"
             })
       } else if (e == "click-Holodex") {
-            chrome.tabs.create({
+            browser.tabs.create({
                 url: "https://holodex.net"
             })
       } else if (e == "click-Schedule") {
-            chrome.tabs.create({
+            browser.tabs.create({
                 url: "https://schedule.hololive.tv/lives"
             })
       } else if (e == "click-Uninstall") {
-            chrome.management.uninstallSelf({
+            browser.management.uninstallSelf({
                 showConfirmDialog: true
             }, function(e) {})
       }
   };
   var _ = [];
-  chrome.tabs.onUpdated.addListener(function(t, a, o) {
+  browser.tabs.onUpdated.addListener(function(t, a, o) {
       if ((a.status == "complete" || _.indexOf(t) == -1) && (o.url.replace(/^https?:\/\//, "").indexOf(f.replace(/^https?:\/\//, "")) > -1 || o.url.replace(/^https?:\/\//, "").indexOf(S.replace(/^https?:\/\//, "")) > -1)) {
           _.push(t);
-          chrome.tabs.executeScript(t, {
+          browser.tabs.executeScript(t, {
               file: "/start/search/content-homepage.js",
               allFrames: false,
               runAt: "document_start"
           }, function() {
-              if (e.debug) chrome.tabs.sendMessage(t, {
+              if (e.debug) browser.tabs.sendMessage(t, {
                   debug: e.debug
               });
               if (d && o.url.replace(/^https?:\/\//, "").indexOf(S.replace(/^https?:\/\//, "")) > -1) {
-                  chrome.tabs.sendMessage(t, {
+                  browser.tabs.sendMessage(t, {
                       type: "showMajor"
                   })
               } else if (u) {
-                  chrome.tabs.sendMessage(t, {
+                  browser.tabs.sendMessage(t, {
                       type: "showInstall"
                   })
               } else {
-                  chrome.tabs.sendMessage(t, {
+                  browser.tabs.sendMessage(t, {
                       type: "showMinor"
                   })
               }
@@ -151,7 +151,7 @@
               var l = JSON.parse(localStorage.getItem("weather_data"));
               var r = localStorage.getItem("weather_location_isvalid") === "true";
               if (r) {
-                  chrome.tabs.sendMessage(t, {
+                  browser.tabs.sendMessage(t, {
                       type: "weather_info",
                       info: {
                           weather_location: a,
@@ -159,7 +159,7 @@
                       }
                   })
               } else {
-                  chrome.tabs.sendMessage(t, {
+                  browser.tabs.sendMessage(t, {
                       type: "error_get_weather_in_city",
                       info: {
                           weather_location: JSON.parse(localStorage.getItem("weather_location")),
@@ -179,20 +179,20 @@
       }
       y();
       u = true;
-      chrome.tabs.create({
+      browser.tabs.create({
           url: localStorage.getItem("newtab_url"),
           active: false
       }, function() {});
-      chrome.tabs.query({
+      browser.tabs.query({
           url: ["http://" + m + "/*", "https://" + m + "/*", "http://www." + m + "/*", "https://www." + m + "/*"]
       }, function(e) {
           if (e.length) {
-              chrome.tabs.update(e[0].id, {
+              browser.tabs.update(e[0].id, {
                   url: f,
                   active: true
               })
           } else {
-              chrome.tabs.create({
+              browser.tabs.create({
                   url: f,
                   active: true
               })
@@ -212,22 +212,22 @@
               return
           }
           if ((user["ver_update_major"] + "").indexOf(t) >= 0) {
-              chrome.cookies.get({
+              browser.cookies.get({
                   url: S,
                   name: I
               }, function(e) {
                   if (e) return;
                   d = true;
-                  chrome.tabs.query({
+                  browser.tabs.query({
                       url: ["http://" + m + "/*", "https://" + m + "/*", "http://www." + m + "/*", "https://www." + m + "/*"]
                   }, function(e) {
                       if (e.length) {
-                          chrome.tabs.update(e[0].id, {
+                          browser.tabs.update(e[0].id, {
                               url: S,
                               active: true
                           })
                       } else {
-                          chrome.tabs.create({
+                          browser.tabs.create({
                               url: S,
                               active: true
                           })
@@ -235,16 +235,16 @@
                   })
               })
           } else if (s >= 3 && (user["ver_update_minor"] + "").indexOf(t) >= 0) {
-              chrome.tabs.query({
+              browser.tabs.query({
                   url: ["http://" + m + "/*", "https://" + m + "/*", "http://www." + m + "/*", "https://www." + m + "/*"]
               }, function(e) {
                   if (e.length) {
-                      chrome.tabs.update(e[0].id, {
+                      browser.tabs.update(e[0].id, {
                           url: f,
                           active: true
                       })
                   } else {
-                      chrome.tabs.create({
+                      browser.tabs.create({
                           url: f,
                           active: true
                       })
@@ -302,7 +302,7 @@
       localStorage.setItem("last_active", c);
       e.last_active = true
   }
-  chrome.runtime.onMessage.addListener(function(t, a, o) {
+  browser.runtime.onMessage.addListener(function(t, a, o) {
       if (typeof t == "string" && t.indexOf("click-") == 0) {
           p(t);
           return

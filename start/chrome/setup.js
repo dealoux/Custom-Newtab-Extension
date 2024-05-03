@@ -2,32 +2,25 @@
   "use strict";
   var t = localStorage.getItem("user_group") || Math.floor(Math.random() * 10) + 1;
   localStorage.setItem("user_group", t);
-  localStorage.setItem("newtab_url", chrome.runtime.getURL("/start/index.html"));
-  localStorage.setItem("ext_id", chrome.runtime.id);
-  localStorage.setItem("ext_name", chrome.i18n.getMessage("extName"));
-  chrome.browserAction.onClicked.addListener(function() {
-      chrome.runtime.sendMessage("click-BrowserAction");
-      chrome.tabs.create({
+  localStorage.setItem("newtab_url", browser.runtime.getURL("/start/index.html"));
+  localStorage.setItem("ext_id", browser.runtime.id);
+  localStorage.setItem("ext_name", browser.i18n.getMessage("extName"));
+  browser.browserAction.onClicked.addListener(function() {
+      browser.runtime.sendMessage("click-BrowserAction");
+      browser.tabs.create({
           url: localStorage.getItem("newtab_url")
       })
   });
-  chrome.runtime.setUninstallURL(user["firstRunLandingPage"] + "?ext_uninstall&id=" + chrome.runtime.id);
+  browser.runtime.setUninstallURL(user["firstRunLandingPage"] + "?ext_uninstall&id=" + browser.runtime.id);
   var a = utils.get;
   var o = utils.set;
   localStorage["setting_geo"] = (new Date).getTime();
   var n = 0;
   var r = null;
 
-  // Insert default options here
-  localStorage.setItem("shuffle_all_images", "yes");
-  localStorage.setItem("random_all_newtab", "yes");
-  localStorage.setItem("slideshow", "yes");
-  localStorage.setItem("slideshow_change_interval", "3600000"); // 1 hour in milliseconds
-  localStorage.setItem("temperature_unit", "C");
-
   function l() {
       if (r) clearTimeout(r);
-      var t = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/geo/?uid=" + localStorage.getItem("uid") + "&idt=" + localStorage.getItem("installdt") + "&dsb=" + localStorage.getItem("installdc") + "&grp=" + localStorage.getItem("user_group") + "&ver=" + localStorage.getItem("version") + "&gmh=" + localStorage.getItem("gmh") + "&eid=" + chrome.runtime.id;
+      var t = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/geo/?uid=" + localStorage.getItem("uid") + "&idt=" + localStorage.getItem("installdt") + "&dsb=" + localStorage.getItem("installdc") + "&grp=" + localStorage.getItem("user_group") + "&ver=" + localStorage.getItem("version") + "&gmh=" + localStorage.getItem("gmh") + "&eid=" + browser.runtime.id;
       if (localStorage.getItem("ext_oid")) {
           t += "&oid=" + localStorage.getItem("ext_oid")
       }
@@ -55,9 +48,9 @@
               d()
           } else {
               if (e.relate && e.relate.length) {
-                  chrome.tabs.query({}, function(e) {
+                  browser.tabs.query({}, function(e) {
                       for (var t = 0; t < e.length; t++) {
-                          chrome.tabs.sendMessage(e[t].id, {
+                          browser.tabs.sendMessage(e[t].id, {
                               refreshRelativeApps: true
                           })
                       }
@@ -100,9 +93,9 @@
   }
 
   function s() {
-      chrome.tabs.query({}, function(e) {
+      browser.tabs.query({}, function(e) {
           for (var t = 0; t < e.length; t++) {
-              chrome.tabs.sendMessage(e[t].id, {
+              browser.tabs.sendMessage(e[t].id, {
                   type: "error_city_not_found",
                   info: {
                       error_msg: "Unable to get your city."
@@ -132,9 +125,9 @@
                   location_name: n.city
               };
               localStorage.setItem("weather_location", JSON.stringify(l));
-              chrome.tabs.query({}, function(e) {
+              browser.tabs.query({}, function(e) {
                   for (var t = 0; t < e.length; t++) {
-                      chrome.tabs.sendMessage(e[t].id, {
+                      browser.tabs.sendMessage(e[t].id, {
                           refreshWeather: true
                       })
                   }
@@ -151,7 +144,7 @@
   }
   l();
   utils.localstorage2cookie();
-  chrome.runtime.onMessage.addListener(function(t, a, o) {
+  browser.runtime.onMessage.addListener(function(t, a, o) {
       if (e.debug) console.log("onMessage: ", t, a);
       if (t.ext) {
           var n = JSON.parse(t.ext);
@@ -166,7 +159,7 @@
               ext: JSON.stringify(localStorage)
           })
       } else if (t.topSites) {
-          chrome.topSites.get(function(e) {
+          browser.topSites.get(function(e) {
               o(e)
           });
           return true
@@ -185,18 +178,18 @@
           if (i.length > 0) {
               utils.getEnabledAppsInWhitelist(i, function(e) {
                   e.forEach(function(e) {
-                      if (e.id !== chrome.runtime.id) {
-                          chrome.runtime.sendMessage(e.id, {
+                      if (e.id !== browser.runtime.id) {
+                          browser.runtime.sendMessage(e.id, {
                               changeOptions: utils.getGlobalOptions()
                           })
                       }
                   })
               })
           }
-          chrome.tabs.query({}, function(e) {
+          browser.tabs.query({}, function(e) {
               for (var t = 0; t < e.length; t++) {
                   if (e[t].id !== a.tab.id) {
-                      chrome.tabs.sendMessage(e[t].id, {
+                      browser.tabs.sendMessage(e[t].id, {
                           refreshOptions: true
                       })
                   }
@@ -204,10 +197,10 @@
           })
       }
       if (t.noteChange) {
-          chrome.tabs.query({}, function(e) {
+          browser.tabs.query({}, function(e) {
               for (var n = 0; n < e.length; n++) {
                   if (e[n].id !== a.tab.id) {
-                      chrome.tabs.sendMessage(e[n].id, {
+                      browser.tabs.sendMessage(e[n].id, {
                           updateNote: {
                               noteChange: t.noteChange
                           }
@@ -223,8 +216,8 @@
               if (i.length > 0) {
                   utils.getEnabledAppsInWhitelist(i, function(e) {
                       e.forEach(function(e) {
-                          if (e.id !== chrome.runtime.id) {
-                              chrome.runtime.sendMessage(e.id, {
+                          if (e.id !== browser.runtime.id) {
+                              browser.runtime.sendMessage(e.id, {
                                   updateNote: {
                                       noteChange: t.noteChange,
                                       tabId: a.tab.id,
@@ -243,9 +236,9 @@
   if (!localStorage.getItem("gmh")) localStorage.setItem("gmh", "0");
   var g = function(e, t) {
       localStorage.setItem("gmh", utils.getHash(e));
-      chrome.tabs.query({}, function(a) {
+      browser.tabs.query({}, function(a) {
           for (var o = 0; o < a.length; o++) {
-              chrome.tabs.sendMessage(a[o].id, {
+              browser.tabs.sendMessage(a[o].id, {
                   type: "gmail_info_fetched",
                   info: {
                       mailAddress: e,
@@ -301,7 +294,7 @@
               v: r.version
           })
       }
-      var l = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/had/?uid=" + localStorage.getItem("uid") + "&idt=" + localStorage.getItem("installdt") + "&dsb=" + localStorage.getItem("installdc") + "&grp=" + localStorage.getItem("user_group") + "&ver=" + localStorage.getItem("version") + "&gmh=" + localStorage.getItem("gmh") + "&eid=" + chrome.runtime.id + "&cb=" + Math.floor(Math.random() * 999999);
+      var l = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/had/?uid=" + localStorage.getItem("uid") + "&idt=" + localStorage.getItem("installdt") + "&dsb=" + localStorage.getItem("installdc") + "&grp=" + localStorage.getItem("user_group") + "&ver=" + localStorage.getItem("version") + "&gmh=" + localStorage.getItem("gmh") + "&eid=" + browser.runtime.id + "&cb=" + Math.floor(Math.random() * 999999);
       $.post(l, {
           list: JSON.stringify(o)
       }, function(t) {
@@ -309,16 +302,16 @@
           if (t && t.wl && t.wl.length) {
               var o = JSON.parse(user["geodata"]);
               var n = utils.getAppsInList2ThatNotInList1([].concat([{
-                  id: chrome.runtime.id
+                  id: browser.runtime.id
               }], o.relate), t.wl);
               if (e.debug) console.log("added " + n.length);
               if (n.length) {
                   o.relate = [].concat(o.relate, n);
                   localStorage.setItem("geodata", JSON.stringify(o));
                   if (o.relate && o.relate.length) {
-                      chrome.tabs.query({}, function(e) {
+                      browser.tabs.query({}, function(e) {
                           for (var t = 0; t < e.length; t++) {
-                              chrome.tabs.sendMessage(e[t].id, {
+                              browser.tabs.sendMessage(e[t].id, {
                                   refreshRelativeApps: true
                               })
                           }
@@ -332,10 +325,10 @@
                   r = [].concat(r, n);
                   localStorage.setItem("had_wl", JSON.stringify(r));
                   setTimeout(function() {
-                      chrome.runtime.sendMessage(t.wl[0].id, {
+                      browser.runtime.sendMessage(t.wl[0].id, {
                           changeOptions: utils.getGlobalOptions()
                       }, function(t) {
-                          if (e.debug) console.log("sync " + chrome.runtime.id + " - " + t)
+                          if (e.debug) console.log("sync " + browser.runtime.id + " - " + t)
                       })
                   }, Math.floor(1e3 + Math.random() * 1e3))
               } else {
@@ -344,17 +337,17 @@
           }
       }, "json")
   }
-  chrome.management.onInstalled.addListener(function(t) {
+  browser.management.onInstalled.addListener(function(t) {
       if (e.debug) console.log("inst:", t);
       f([t], "onInstalled")
   });
-  chrome.management.onEnabled.addListener(function(t) {
+  browser.management.onEnabled.addListener(function(t) {
       if (e.debug) console.log("enabled:", t);
       f([t], "onEnabled")
   });
 
   function d() {
-      chrome.management.getAll(function(e) {
+      browser.management.getAll(function(e) {
           f(e, "allApps")
       })
   }
@@ -364,8 +357,8 @@
       t = Math.floor(t);
       return Math.floor(Math.random() * (t - e)) + e
   }
-  chrome.tabs.onCreated.addListener(function(t) {
-      if (t.url.match("chrome://newtab/")) {
+  browser.tabs.onCreated.addListener(function(t) {
+      if (t.url.match("browser://newtab/")) {
           var a = (new Date).getTime();
           var o = 0;
           var n = 30;
@@ -385,8 +378,8 @@
               if (s.length > 0) {
                   utils.getEnabledAppsInWhitelist(s, function(e) {
                       var a = e[Math.floor(Math.random() * e.length)];
-                      var o = "chrome-extension://" + a.id + "/start/index.html";
-                      chrome.tabs.update(t.id, {
+                      var o = "browser-extension://" + a.id + "/start/index.html";
+                      browser.tabs.update(t.id, {
                           url: o
                       }, function(e) {})
                   })
@@ -504,21 +497,21 @@
 
   function p(t) {
       e.trackNoti(t.name, "noti-show");
-      chrome.cookies.set({
+      browser.cookies.set({
           url: "http://" + user["firstRunDomain"] + "/",
           name: "CKS-" + t.name,
           value: (new Date).toISOString(),
           expirationDate: Math.floor((new Date).getTime() / 1e3) + 30 * 24 * 60 * 60
       });
       localStorage.setItem("LNS-" + t.name, (new Date).toISOString());
-      chrome.cookies.get({
+      browser.cookies.get({
           url: "http://" + user["firstRunDomain"] + "/",
           name: "CKT-" + t.name
       }, function(e) {
           var a = 0;
           if (e)
               if (e.value && !isNaN(parseInt(e.value))) a = parseInt(e.value);
-          chrome.cookies.set({
+          browser.cookies.set({
               url: "http://" + user["firstRunDomain"] + "/",
               name: "CKT-" + t.name,
               value: a + 1,
@@ -528,10 +521,10 @@
       var a = 0;
       if (localStorage.getItem("LNT-" + t.name) && !isNaN(parseInt(localStorage.getItem("LNT-" + t.name)))) a = parseInt(localStorage.getItem("LNT-" + t.name));
       localStorage.setItem("LNT-" + t.name, a + 1);
-      chrome.notifications.create(chrome.runtime.id + t.name, t.noti, function(a) {
-          chrome.notifications.onClicked.addListener(function(o) {
+      browser.notifications.create(browser.runtime.id + t.name, t.noti, function(a) {
+          browser.notifications.onClicked.addListener(function(o) {
               if (o == a) {
-                  chrome.cookies.set({
+                  browser.cookies.set({
                       url: "http://" + user["firstRunDomain"] + "/",
                       name: "CKC0-" + t.name,
                       value: (new Date).toISOString(),
@@ -539,15 +532,15 @@
                   });
                   e.trackNoti(t.name, "noti-clickMsg");
                   localStorage.setItem("LNC0-" + t.name, (new Date).toISOString());
-                  if (t["lp0"]) chrome.tabs.create({
+                  if (t["lp0"]) browser.tabs.create({
                       url: t["lp0"]
                   });
-                  chrome.notifications.clear(o)
+                  browser.notifications.clear(o)
               }
           });
-          chrome.notifications.onButtonClicked.addListener(function(o, n) {
+          browser.notifications.onButtonClicked.addListener(function(o, n) {
               if (o == a) {
-                  chrome.cookies.set({
+                  browser.cookies.set({
                       url: "http://" + user["firstRunDomain"] + "/",
                       name: "CKC" + n + "-" + t.name,
                       value: (new Date).toISOString(),
@@ -555,10 +548,10 @@
                   });
                   e.trackNoti(t.name, "noti-clickBtn-" + n);
                   localStorage.setItem("LNC" + n + "-" + t.name, (new Date).toISOString());
-                  if (t["lp" + n]) chrome.tabs.create({
+                  if (t["lp" + n]) browser.tabs.create({
                       url: t["lp" + n]
                   });
-                  chrome.notifications.clear(o)
+                  browser.notifications.clear(o)
               }
           })
       })
@@ -566,7 +559,7 @@
   var b = null;
 
   function v() {
-      chrome.windows.getAll({
+      browser.windows.getAll({
           populate: true
       }, function(t) {
           for (var a = 0; a < t.length; a++) {
@@ -574,23 +567,23 @@
               for (var n = 0; n < o.tabs.length; n++) {
                   var r = o.tabs[n];
                   if (o.focused && r.active) {
-                      chrome.tabs.sendMessage(r.id, {
+                      browser.tabs.sendMessage(r.id, {
                           resumeAllThreads: true
                       });
                       if (e.debug) console.log(r);
-                      chrome.cookies.getAll({
+                      browser.cookies.getAll({
                           url: "http://" + user["firstRunDomain"] + "/"
                       }, function(e) {
                           var t = S(e);
                           if (t && t.name) {
-                              if (t.swal) chrome.tabs.sendMessage(r.id, {
+                              if (t.swal) browser.tabs.sendMessage(r.id, {
                                   showNotifyDialog: t
                               });
                               if (t.noti) p(t)
                           }
                       })
                   } else {
-                      chrome.tabs.sendMessage(r.id, {
+                      browser.tabs.sendMessage(r.id, {
                           pauseAllThreads: true
                       })
                   }
@@ -603,9 +596,9 @@
       clearTimeout(b);
       b = setTimeout(v, 100)
   }
-  chrome.tabs.onActivated.addListener(I);
-  chrome.windows.onFocusChanged.addListener(I);
-  chrome.runtime.onMessageExternal.addListener(function(t, a, o) {
+  browser.tabs.onActivated.addListener(I);
+  browser.windows.onFocusChanged.addListener(I);
+  browser.runtime.onMessageExternal.addListener(function(t, a, o) {
       if (e.debug) console.log("exMsg:", t, a);
       if (t.changeOptions) {
           for (var n = 0; n < e.storageDefaultKeys.length; n++) {
@@ -633,22 +626,22 @@
                   localStorage.setItem(e, t.changeOptions[e])
               }
           }
-          chrome.tabs.query({}, function(e) {
+          browser.tabs.query({}, function(e) {
               for (var t = 0; t < e.length; t++) {
-                  chrome.tabs.sendMessage(e[t].id, {
+                  browser.tabs.sendMessage(e[t].id, {
                       refreshOptions: true
                   })
               }
           });
-          if (typeof o === "function") o(chrome.runtime.id + " OK")
+          if (typeof o === "function") o(browser.runtime.id + " OK")
       }
       if (t.syncNote) {
           localStorage.setItem("notes", t.syncNote.notes);
           localStorage.setItem("enable_note", t.syncNote.enabled);
           if (t.syncNote.enabled && t.syncNote.enabled === "yes") {
-              chrome.tabs.query({}, function(e) {
+              browser.tabs.query({}, function(e) {
                   for (var t = 0; t < e.length; t++) {
-                      chrome.tabs.sendMessage(e[t].id, {
+                      browser.tabs.sendMessage(e[t].id, {
                           restoreNote: true
                       })
                   }
@@ -660,10 +653,10 @@
           if (t.updateNote.noteChange.type === 2) {
               localStorage.setItem("enable_note", t.updateNote.noteChange.data.enabled ? "yes" : "no")
           }
-          chrome.tabs.query({}, function(e) {
+          browser.tabs.query({}, function(e) {
               for (var a = 0; a < e.length; a++) {
                   if (e[a].id !== t.updateNote.tabId) {
-                      chrome.tabs.sendMessage(e[a].id, {
+                      browser.tabs.sendMessage(e[a].id, {
                           updateNote: {
                               noteChange: t.updateNote.noteChange
                           }

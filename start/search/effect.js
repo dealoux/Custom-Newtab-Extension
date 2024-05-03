@@ -60,7 +60,7 @@ window.loadAutoHideModule = function(e) {
       } else {
           i()
       }
-      chrome.runtime.sendMessage({
+      browser.runtime.sendMessage({
           changeOptions: utils.getGlobalOptions()
       })
   })
@@ -720,7 +720,7 @@ window.loadSnowModule = function(e) {
           n();
           $("#snow_type").parent().parent().parent().fadeOut()
       }
-      chrome.runtime.sendMessage({
+      browser.runtime.sendMessage({
           changeOptions: utils.getGlobalOptions()
       })
   });
@@ -730,12 +730,12 @@ window.loadSnowModule = function(e) {
   $("#snow_type").off("change").on("change", function() {
       var e = $(this).val();
       localStorage.setItem("snow_type", e);
-      chrome.runtime.sendMessage({
+      browser.runtime.sendMessage({
           changeOptions: utils.getGlobalOptions()
       });
       n();
       t();
-      chrome.runtime.sendMessage({
+      browser.runtime.sendMessage({
           name: "click-Snow-" + ("" + e).capitalize()
       })
   })

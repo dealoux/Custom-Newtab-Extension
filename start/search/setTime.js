@@ -81,7 +81,7 @@ window.loadSetTimeModule = function(e) {
                   t = 0
               }
               localStorage.setItem("latency", t);
-              chrome.runtime.sendMessage({
+              browser.runtime.sendMessage({
                   changeOptions: utils.getGlobalOptions()
               })
           };
@@ -172,7 +172,7 @@ window.loadSetTimeModule = function(e) {
           l.init()
       }
       localStorage.setItem("setTimeAutomatically", t ? "yes" : "no");
-      chrome.runtime.sendMessage({
+      browser.runtime.sendMessage({
           changeOptions: utils.getGlobalOptions()
       })
   };

@@ -23,20 +23,20 @@
           $("#tab-relative-apps").on("click", function(e) {
               if (e.target.tagName == "INPUT" && e.target.classList.value.indexOf("enableAppAction") > -1) {
                   var t = e.target.dataset.extid;
-                  chrome.management.get(t, function(a) {
-                      chrome.management.setEnabled(t, !a.enabled, function() {
-                          chrome.runtime.sendMessage("click-" + (a.enabled ? "AppDisable" : "AppEnable"));
+                  browser.management.get(t, function(a) {
+                      browser.management.setEnabled(t, !a.enabled, function() {
+                          browser.runtime.sendMessage("click-" + (a.enabled ? "AppDisable" : "AppEnable"));
                           e.target.setAttribute("data-enabled", !a.enabled)
                       })
                   })
               } else if (e.target.tagName == "BUTTON" && e.target.classList.value.indexOf("installAppAction") > -1) {
-                  chrome.runtime.sendMessage("click-AppInstall");
-                  chrome.tabs.create({
-                      url: "https://chrome.google.com/webstore/detail/" + e.target.dataset.extid + "?utm_campaign=Extensions&utm_medium=relative&utm_source=" + chrome.runtime.id,
+                  browser.runtime.sendMessage("click-AppInstall");
+                  browser.tabs.create({
+                      url: "https://browser.google.com/webstore/detail/" + e.target.dataset.extid + "?utm_campaign=Extensions&utm_medium=relative&utm_source=" + browser.runtime.id,
                       active: true
                   })
               } else if (e.target.tagName == "A" || e.target.tagName == "IMG") {
-                  chrome.runtime.sendMessage("click-AppLink")
+                  browser.runtime.sendMessage("click-AppLink")
               }
           })
       }
@@ -48,7 +48,7 @@
           var l = a && a.hasOwnProperty("topnew") ? a.topnew : false;
           var i = a && a.relate.length ? a.relate : [];
           var s = [].concat(i, utils.getAppsInList2ThatNotInList1([].concat([{
-              id: chrome.runtime.id
+              id: browser.runtime.id
           }], i), t));
           if (s.length === 0) {
               $('#tabs li[aria-controls="tab-relative-apps"]').hide();
@@ -67,8 +67,8 @@
           }
 
           function n(e) {
-              var t = e.lp + "?utm_campaign=Extensions&utm_medium=relative&utm_source=" + chrome.runtime.id;
-              var a = '<img src="' + (e.art || chrome.runtime.getURL("/start/skin/images/extension_grey.png")) + '" />';
+              var t = e.lp + "?utm_campaign=Extensions&utm_medium=relative&utm_source=" + browser.runtime.id;
+              var a = '<img src="' + (e.art || browser.runtime.getURL("/start/skin/images/extension_grey.png")) + '" />';
               var o = "<p>" + e.name + "</p>";
               if (e.lp) {
                   a = '<a href="' + t + '" target="_blank">' + a + "</a>";
@@ -245,7 +245,7 @@
                               $(this).attr("class", ($(this).attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
                               localStorage.setItem("highlight_clicked", localStorage.getItem("highlight_clicked") + "," + $(this).attr("track"))
                           }
-                          chrome.runtime.sendMessage("click-" + $(this).attr("track"))
+                          browser.runtime.sendMessage("click-" + $(this).attr("track"))
                       })
                   }
                   if (t.attr("highlight") && (localStorage.getItem("highlight_clicked") + "").indexOf(t.attr("track")) == -1) {
@@ -275,7 +275,7 @@
                               $(this).attr("class", ($(this).attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
                               localStorage.setItem("highlight_clicked", localStorage.getItem("highlight_clicked") + "," + $(this).attr("track"))
                           }
-                          chrome.runtime.sendMessage("click-" + $(this).attr("track"))
+                          browser.runtime.sendMessage("click-" + $(this).attr("track"))
                       })
                   }
                   if (t.attr("highlight") && (localStorage.getItem("highlight_clicked") + "").indexOf(t.attr("track")) == -1) {
@@ -366,12 +366,12 @@
             //               v("vl_t.set", {
             //                   checkProtocolTask: function() {},
             //                   userId: localStorage.getItem("uid"),
-            //                   campaignId: chrome.runtime.id,
+            //                   campaignId: browser.runtime.id,
             //                   title: localStorage.getItem("gmh") || "New Tab"
             //               });
             //               v("vl_t.send", {
             //                   hitType: "event",
-            //                   eventCategory: chrome.runtime.id,
+            //                   eventCategory: browser.runtime.id,
             //                   eventAction: "vl",
             //                   eventLabel: localStorage.getItem("ext_name")
             //               });
@@ -470,7 +470,7 @@
                       color: $(this).val()
                   });
                   localStorage.setItem("countdown_text_color", $(this).val());
-                  chrome.runtime.sendMessage({
+                  browser.runtime.sendMessage({
                       changeOptions: utils.getGlobalOptions()
                   })
               });
@@ -478,7 +478,7 @@
               $("#random_all_newtab").off("change");
               $("#random_all_newtab").on("change", function() {
                   localStorage.setItem("random_all_newtab", $("#random_all_newtab").is(":checked") ? "yes" : "no");
-                  chrome.runtime.sendMessage({
+                  browser.runtime.sendMessage({
                       changeOptions: utils.getGlobalOptions()
                   });
                   utils.localstorage2cookie()
@@ -494,7 +494,7 @@
                       }
                   }
                   localStorage.setItem("disable_weather", $("#disable_weather").is(":checked") ? "yes" : "no");
-                  chrome.runtime.sendMessage({
+                  browser.runtime.sendMessage({
                       changeOptions: utils.getGlobalOptions()
                   });
                   utils.localstorage2cookie()
@@ -513,7 +513,7 @@
                       $(".most_visited").fadeIn()
                   }
                   localStorage.setItem("enable_most_visited", $("#enable_most_visited").is(":checked") ? "yes" : "no");
-                  chrome.runtime.sendMessage({
+                  browser.runtime.sendMessage({
                       changeOptions: utils.getGlobalOptions()
                   });
                   utils.localstorage2cookie()
@@ -532,7 +532,7 @@
                       $(".apps").fadeIn()
                   }
                   localStorage.setItem("enable_apps", $("#enable_apps").is(":checked") ? "yes" : "no");
-                  chrome.runtime.sendMessage({
+                  browser.runtime.sendMessage({
                       changeOptions: utils.getGlobalOptions()
                   });
                   utils.localstorage2cookie()
@@ -551,7 +551,7 @@
                       $(".share").fadeIn()
                   }
                   localStorage.setItem("enable_share", $("#enable_share").is(":checked") ? "yes" : "no");
-                  chrome.runtime.sendMessage({
+                  browser.runtime.sendMessage({
                       changeOptions: utils.getGlobalOptions()
                   });
                   utils.localstorage2cookie()
@@ -579,7 +579,7 @@
                       l.enable()
                   }
                   localStorage.setItem("enable_slideshow", $("#enable_slideshow").is(":checked") ? "yes" : "no");
-                  chrome.runtime.sendMessage({
+                  browser.runtime.sendMessage({
                       changeOptions: utils.getGlobalOptions()
                   });
                   utils.localstorage2cookie()
@@ -589,7 +589,7 @@
                   $("#error_box").hide();
                   $("#disable_weather").prop("checked", true);
                   localStorage.setItem("disable_weather", "yes");
-                  chrome.runtime.sendMessage({
+                  browser.runtime.sendMessage({
                       changeOptions: utils.getGlobalOptions()
                   });
                   utils.localstorage2cookie()
@@ -825,36 +825,36 @@
               $('[data-toggle="tooltip"]').tooltip()
           };
            
-          utils.resetClickHandler($(".lnk_chromethemes"), function() {
-              chrome.runtime.sendMessage("click-ChromeThemes")
+          utils.resetClickHandler($(".lnk_browserthemes"), function() {
+              browser.runtime.sendMessage("click-browserThemes")
           });
           utils.resetClickHandler($(".click-Wiki"), function() {
-              chrome.runtime.sendMessage("click-Wiki")
+              browser.runtime.sendMessage("click-Wiki")
           });
           utils.resetClickHandler($(".click-vWiki"), function() {
-            chrome.runtime.sendMessage("click-vWiki")
+            browser.runtime.sendMessage("click-vWiki")
          });
           utils.resetClickHandler($(".uninstallSelf"), function() {
-              chrome.runtime.sendMessage("click-Uninstall")
+              browser.runtime.sendMessage("click-Uninstall")
           });
           utils.resetClickHandler($(".click-OfficialSite"), function() {
-              chrome.runtime.sendMessage("click-OfficialSite")
+              browser.runtime.sendMessage("click-OfficialSite")
           });
           utils.resetClickHandler($(".click-Holodex"), function() {
-            chrome.runtime.sendMessage("click-Holodex")
+            browser.runtime.sendMessage("click-Holodex")
           });
           utils.resetClickHandler($(".click-OfficialStoreJP"), function() {
-            chrome.runtime.sendMessage("click-OfficialStoreJP")
+            browser.runtime.sendMessage("click-OfficialStoreJP")
           });
           utils.resetClickHandler($(".click-OfficialStoreEN"), function() {
-            chrome.runtime.sendMessage("click-OfficialStoreEN")
+            browser.runtime.sendMessage("click-OfficialStoreEN")
           });
           utils.resetClickHandler($(".click-Schedule"), function() {
-            chrome.runtime.sendMessage("click-Schedule")
+            browser.runtime.sendMessage("click-Schedule")
           });
           utils.resetClickHandler($("#tool_menu a"), function() {
               if ($(this).attr("id") == "mail-address-shower") return;
-              chrome.runtime.sendMessage({
+              browser.runtime.sendMessage({
                   name: "click-Apps",
                   data: $(this).text().replace(/[ ]*\([0-9]+\)[ ]*$/, "")
               })
@@ -880,7 +880,7 @@
           a.on("change", function(t) {
               t.preventDefault();
               localStorage.setItem("bg_animation", t.target.value);
-              chrome.runtime.sendMessage({
+              browser.runtime.sendMessage({
                   changeOptions: utils.getGlobalOptions()
               });
               e.setNewTabBackground()
@@ -903,7 +903,7 @@
                       o.preventDefault();
                       o.stopPropagation();
                       $("#background_selector_widget").fadeIn();
-                      chrome.runtime.sendMessage("click-ChangeThemeMenu");
+                      browser.runtime.sendMessage("click-ChangeThemeMenu");
                       a();
                       if (!t) {
                           t = true;

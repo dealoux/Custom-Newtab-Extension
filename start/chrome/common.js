@@ -27,7 +27,7 @@
   var n = {
       userId: a,
       checkProtocolTask: function() {},
-      campaignId: chrome.runtime.id,
+      campaignId: browser.runtime.id,
       title: localStorage.getItem("gmh") || "New Tab"
   };
   ga("create", "UA-87134519-1", "auto");
@@ -118,7 +118,7 @@
   e.trackStatusEvent = function(e, t, a, r) {
       var n = "";
       if (e.indexOf("search") == 0) {
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               search: e,
               query: a
           }, r);
@@ -129,7 +129,7 @@
       if (n) {
           ga(n + "." + "send", {
               hitType: "event",
-              eventCategory: chrome.i18n.getMessage("extName"),
+              eventCategory: browser.i18n.getMessage("extName"),
               eventAction: e,
               eventLabel: a == null || typeof a == "string" ? a : JSON.stringify(a)
           })

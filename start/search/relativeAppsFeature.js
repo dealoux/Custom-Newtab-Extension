@@ -88,7 +88,7 @@ window.relativeAppsFeatures = function(e, t) {
                   if (i.toLowerCase().indexOf(a.keyword.toLowerCase()) > -1) item.style.display = "block";
                   else item.style.display = "none"
               }
-              chrome.runtime.sendMessage({
+              browser.runtime.sendMessage({
                   name: "click-SearchRelativeApps",
                   data: a.keyword
               })

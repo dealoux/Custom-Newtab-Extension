@@ -41,15 +41,15 @@
           return r
       },
       get id() {
-          var e = localStorage.getItem("ext_id") || chrome.app.getDetails().id;
+          var e = localStorage.getItem("ext_id") || browser.app.getDetails().id;
           return e
       },
       get id4() {
-          var e = localStorage.getItem("ext_id") || chrome.app.getDetails().id;
+          var e = localStorage.getItem("ext_id") || browser.app.getDetails().id;
           return e.substring(0, 4)
       },
       get version() {
-          var e = localStorage.getItem("version") || chrome.app.getDetails().version;
+          var e = localStorage.getItem("version") || browser.app.getDetails().version;
           return e
       },
       get locale() {
@@ -91,7 +91,7 @@
           e.on("click", t)
       },
       getExtensionURL: function(e) {
-          return chrome.runtime.getURL(e)
+          return browser.runtime.getURL(e)
       },
       getGlobalOptions: function() {
           var t = {
@@ -132,7 +132,7 @@
           return t
       },
       getInstalledAppsInWhitelist: function(e, t) {
-          chrome.management.getAll(function(o) {
+          browser.management.getAll(function(o) {
               var a = [];
               for (var n = 0; n < e.length; n++) {
                   var l = e[n];
@@ -147,7 +147,7 @@
           })
       },
       getEnabledAppsInWhitelist: function(e, t) {
-          chrome.management.getAll(function(o) {
+          browser.management.getAll(function(o) {
               var a = [];
               for (var n = 0; n < e.length; n++) {
                   var l = e[n];
@@ -191,8 +191,8 @@
   };
   e.utils = i;
   e.debug = localStorage.getItem("debug") === "debug";
-  if (chrome.management && chrome.management.getSelf) {
-      chrome.management.getSelf(function(t) {
+  if (browser.management && browser.management.getSelf) {
+      browser.management.getSelf(function(t) {
           if (t.installType === "development") {
               e.debug = true;
               localStorage.setItem("debug", "debug")
