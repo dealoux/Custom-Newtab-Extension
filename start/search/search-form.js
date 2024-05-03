@@ -69,7 +69,7 @@
       if (localStorage.getItem("hideApp")) u = JSON.parse(localStorage.getItem("hideApp"));
 
       function d() {
-        $("#tool_menu").html(`\n        <div><a id="tool_myaccount"  href="https://myaccount.google.com/"><i class="icon_myaccount"></i>My Account</a><div class="closebtn" hide-app="https://myaccount.google.com/"></div></div>\n        <div><a id="tool_gmail"      href="https://mail.google.com/mail/"><i class="icon_gmail"></i>Gmail</a><div class="closebtn" hide-app="https://mail.google.com/mail/"></div></div>\n        <div><a id="tool_youtube"    href="https://youtube.com/"><i class="icon_youtube"></i>Youtube</a><div class="closebtn" hide-app="https://youtube.com/"></div></div>\n        <div><a id="tool_drive"      href="https://drive.google.com/"><i class="icon_drive"></i>Drive</a><div class="closebtn" hide-app="https://drive.google.com/"></div></div>\n        <div><a id="tool_documents"  href="https://docs.google.com/document/"><i class="icon_documents"></i>Docs</a><div class="closebtn" hide-app="https://docs.google.com/document/"></div></div>\n        <div><a id="tool_slides"  href="https://docs.google.com/presentation/u/0/?tgif=d"><i class="icon_slides"></i>Slides</a><div class="closebtn" hide-app="https://docs.google.com/presentation/u/0/?tgif=d"></div></div>\n        <div><a id="tool_sheets"  href="https://docs.google.com/spreadsheets/u/0/"><i class="icon_sheets"></i>Sheets</a><div class="closebtn" hide-app="https://docs.google.com/spreadsheets/u/0/"></div></div>\n        <div><a id="tool_calendar"   href="https://calendar.google.com/"><i class="icon_calendar"></i>Calendar</a><div class="closebtn" hide-app="https://calendar.google.com/"></div></div>\n        <div><a id="tool_photos"     href="https://photos.google.com/"><i class="icon_photos"></i>Photos</a><div class="closebtn" hide-app="https://photos.google.com/"></div></div>\n        <div><a id="tool_googleplus" href="https://plus.google.com/"><i class="icon_googleplus"></i>Google+</a><div class="closebtn" hide-app="https://plus.google.com/"></div></div>\n        <div><a id="tool_googlemap"  href="https://maps.google.com/"><i class="icon_googlemap"></i>Google Maps</a><div class="closebtn" hide-app="https://maps.google.com/"></div></div>\n        <div><a id="tool_translate"  href="https://translate.google.com/"><i class="icon_translate"></i>Google Translate</a><div class="closebtn" hide-app="https://translate.google.com/"></div></div>\n        <div><a id="tool_classroom"  href="https://classroom.google.com/"><i class="icon_classroom"></i>Google Classroom</a><div class="closebtn" hide-app="https://classroom.google.com/"></div></div>\n        <hr>\n         <div><a id="tool_holoschedule"   href="https://schedule.hololive.tv/lives"><i class="icon_hololive"></i>Holo Schedule</a><div class="closebtn" hide-app="https://schedule.hololive.tv/lives"></div></div>\n        <div><a id="tool_holodex"   href="https://holodex.net/"><i class="icon_hololive"></i>Holodex</a><div class="closebtn" hide-app="https://holodex.net/"></div></div>\n        <div><a id="tool_vtuberwikipedia"   href="https://virtualyoutuber.fandom.com/wiki/Virtual_YouTuber_Wiki"><i class="icon_vtuberwikipedia"></i>Virtual Youtuber Wikipedia</a><div class="closebtn" hide-app="https://virtualyoutuber.fandom.com/wiki/Virtual_YouTuber_Wiki"></div></div>\n        <div><a id="tool_twitter"   href="https://twitter.com/"><i class="icon_twitter"></i>Twitter</a><div class="closebtn" hide-app="https://twitter.com/"></div></div>\n       <div><a id="tool_facebook"   href="https://facebook.com/"><i class="icon_facebook"></i>Facebook</a><div class="closebtn" hide-app="https://facebook.com/"></div></div>\n        <div><a id="tool_amazon"     href="https://amazon.com/"><i class="icon_amazon"></i>Amazon</a><div class="closebtn" hide-app="https://amazon.com/"></div></div>\n        <div><a id="tool_ebay"       href="https://ebay.com/"><i class="icon_ebay"></i>Ebay</a><div class="closebtn" hide-app="https://ebay.com/"></div></div>\n        <div><a id="tool_wikipedia"  href="https://wikipedia.org/"><i class="icon_wikipedia"></i>Wikipedia</a><div class="closebtn" hide-app="https://wikipedia.org/"></div></div>\n        <div><a id="tool_reddit"     href="https://reddit.com/"><i class="icon_reddit"></i>Reddit</a><div class="closebtn" hide-app="https://reddit.com/"></div></div>\n        `);
+        $("#tool_menu").html(`\n        <div><a id="tool_myaccount"  href="https://myaccount.google.com/"><i class="icon_myaccount"></i>My Account</a><div class="closebtn" hide-app="https://myaccount.google.com/"></div></div>\n        <div><a id="tool_gmail"      href="https://mail.google.com/mail/"><i class="icon_gmail"></i>Gmail</a><div class="closebtn" hide-app="https://mail.google.com/mail/"></div></div>\n        <div><a id="tool_outlook"      href="https://outlook.office.com/mail/"><i class="icon_outlook"></i>Outlook</a><div class="closebtn" hide-app="https://outlook.office.com/mail/"></div></div>\n        <div><a id="tool_youtube"    href="https://youtube.com/"><i class="icon_youtube"></i>Youtube</a><div class="closebtn" hide-app="https://youtube.com/"></div></div>\n        <div><a id="tool_drive"      href="https://drive.google.com/"><i class="icon_drive"></i>Drive</a><div class="closebtn" hide-app="https://drive.google.com/"></div></div>\n        <div><a id="tool_documents"  href="https://docs.google.com/document/"><i class="icon_documents"></i>Docs</a><div class="closebtn" hide-app="https://docs.google.com/document/"></div></div>\n        <div><a id="tool_slides"  href="https://docs.google.com/presentation/u/0/?tgif=d"><i class="icon_slides"></i>Slides</a><div class="closebtn" hide-app="https://docs.google.com/presentation/u/0/?tgif=d"></div></div>\n        <div><a id="tool_sheets"  href="https://docs.google.com/spreadsheets/u/0/"><i class="icon_sheets"></i>Sheets</a><div class="closebtn" hide-app="https://docs.google.com/spreadsheets/u/0/"></div></div>\n        <div><a id="tool_calendar"   href="https://calendar.google.com/"><i class="icon_calendar"></i>Calendar</a><div class="closebtn" hide-app="https://calendar.google.com/"></div></div>\n        <div><a id="tool_photos"     href="https://photos.google.com/"><i class="icon_photos"></i>Photos</a><div class="closebtn" hide-app="https://photos.google.com/"></div></div>\n        <div><a id="tool_googleplus" href="https://plus.google.com/"><i class="icon_googleplus"></i>Google+</a><div class="closebtn" hide-app="https://plus.google.com/"></div></div>\n        <div><a id="tool_googlemap"  href="https://maps.google.com/"><i class="icon_googlemap"></i>Google Maps</a><div class="closebtn" hide-app="https://maps.google.com/"></div></div>\n        <div><a id="tool_translate"  href="https://translate.google.com/"><i class="icon_translate"></i>Google Translate</a><div class="closebtn" hide-app="https://translate.google.com/"></div></div>\n        <div><a id="tool_classroom"  href="https://classroom.google.com/"><i class="icon_classroom"></i>Google Classroom</a><div class="closebtn" hide-app="https://classroom.google.com/"></div></div>\n        <hr>\n         <div><a id="tool_holoschedule"   href="https://schedule.hololive.tv/lives"><i class="icon_hololive"></i>Holo Schedule</a><div class="closebtn" hide-app="https://schedule.hololive.tv/lives"></div></div>\n        <div><a id="tool_holodex"   href="https://holodex.net/"><i class="icon_hololive"></i>Holodex</a><div class="closebtn" hide-app="https://holodex.net/"></div></div>\n        <div><a id="tool_vtuberwikipedia"   href="https://virtualyoutuber.fandom.com/wiki/Virtual_YouTuber_Wiki"><i class="icon_vtuberwikipedia"></i>Virtual Youtuber Wikipedia</a><div class="closebtn" hide-app="https://virtualyoutuber.fandom.com/wiki/Virtual_YouTuber_Wiki"></div></div>\n        <div><a id="tool_twitter"   href="https://twitter.com/"><i class="icon_twitter"></i>Twitter</a><div class="closebtn" hide-app="https://twitter.com/"></div></div>\n       <div><a id="tool_facebook"   href="https://facebook.com/"><i class="icon_facebook"></i>Facebook</a><div class="closebtn" hide-app="https://facebook.com/"></div></div>\n        <div><a id="tool_amazon"     href="https://amazon.com/"><i class="icon_amazon"></i>Amazon</a><div class="closebtn" hide-app="https://amazon.com/"></div></div>\n        <div><a id="tool_ebay"       href="https://ebay.com/"><i class="icon_ebay"></i>Ebay</a><div class="closebtn" hide-app="https://ebay.com/"></div></div>\n        <div><a id="tool_wikipedia"  href="https://wikipedia.org/"><i class="icon_wikipedia"></i>Wikipedia</a><div class="closebtn" hide-app="https://wikipedia.org/"></div></div>\n        <div><a id="tool_reddit"     href="https://reddit.com/"><i class="icon_reddit"></i>Reddit</a><div class="closebtn" hide-app="https://reddit.com/"></div></div>\n        `);
 
           function t(t) {
               for (var o = 0; o < e.length; o++) {
@@ -79,7 +79,7 @@
               }
               return false
           }
-          chrome.management.getAll(function(e) {
+          browser.management.getAll(function(e) {
               var o = e.filter(function(e) {
                   return typeof e.appLaunchUrl !== "undefined"
               });
@@ -129,7 +129,7 @@
       m();
 
       function m() {
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               topSites: true
           }, function(e) {
               var t = 0;
@@ -144,7 +144,7 @@
                   }
               }
               utils.resetClickHandler($("#topsites_menu a"), function(e) {
-                  chrome.runtime.sendMessage("click-TopSites")
+                  browser.runtime.sendMessage("click-TopSites")
               });
               if (localStorage.getItem("hideLink")) {
                   if (JSON.parse(localStorage.getItem("hideLink")).length > 0) {
@@ -173,7 +173,7 @@
                   $(".undo-box").removeClass("undo-box-hide");
                   p("apps")
               }
-              chrome.runtime.sendMessage({
+              browser.runtime.sendMessage({
                   changeOptions: utils.getGlobalOptions()
               })
           })
@@ -205,14 +205,14 @@
                   utils.localstorage2cookie();
                   $("#tool_menu").empty();
                   if (u.toString().indexOf("mail.google.com") < 0) {
-                      chrome.runtime.sendMessage(chrome.runtime.id, {
+                      browser.runtime.sendMessage(browser.runtime.id, {
                           type: "fetch_email_data"
                       })
                   }
                   d()
               }
               $(".undo-box").addClass("undo-box-hide");
-              chrome.runtime.sendMessage({
+              browser.runtime.sendMessage({
                   changeOptions: utils.getGlobalOptions()
               })
           });
@@ -242,7 +242,7 @@
                   if ($(this).attr("restore-for") === "tool_menu") {
                       localStorage.setItem("hideApp", "[]");
                       if (u.toString().indexOf("mail.google.com") < 0) {
-                          chrome.runtime.sendMessage(chrome.runtime.id, {
+                          browser.runtime.sendMessage(browser.runtime.id, {
                               type: "fetch_email_data"
                           })
                       }
@@ -252,7 +252,7 @@
                       c = [];
                       m()
                   }
-                  chrome.runtime.sendMessage({
+                  browser.runtime.sendMessage({
                       changeOptions: utils.getGlobalOptions()
                   })
               })
@@ -354,9 +354,9 @@
       });
 
       function w() {
-          chrome.tabs.query({}, function(e) {
+          browser.tabs.query({}, function(e) {
               for (var t = 0; t < e.length; t++) {
-                  chrome.tabs.sendMessage(e[t].id, {
+                  browser.tabs.sendMessage(e[t].id, {
                       type: "weather_info",
                       info: {
                           weather_location: JSON.parse(localStorage.getItem("weather_location")),
@@ -368,9 +368,9 @@
       }
 
       function S() {
-          chrome.tabs.query({}, function(e) {
+          browser.tabs.query({}, function(e) {
               for (var t = 0; t < e.length; t++) {
-                  chrome.tabs.sendMessage(e[t].id, {
+                  browser.tabs.sendMessage(e[t].id, {
                       type: "error_get_weather_in_city",
                       info: {
                           weather_location: JSON.parse(localStorage.getItem("weather_location")),
@@ -513,7 +513,7 @@
       $("#time_format").on("change", function(e) {
           user["time_format"] = $(this).val();
           T();
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               changeOptions: utils.getGlobalOptions()
           })
       });
@@ -521,7 +521,7 @@
       $("#date_format").on("change", function(e) {
           user["date_format"] = $(this).val();
           T();
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               changeOptions: utils.getGlobalOptions()
           })
       });
@@ -545,7 +545,7 @@
           $("#units_weather").val(user["units_weather"]);
           k();
           T();
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               changeOptions: utils.getGlobalOptions()
           });
           utils.localstorage2cookie()
@@ -559,7 +559,7 @@
           }
           $("#time_format").val(user["time_format"]);
           T();
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               changeOptions: utils.getGlobalOptions()
           });
           utils.localstorage2cookie()
@@ -749,7 +749,7 @@
       J();
       utils.localstorage2cookie();
       $("#change_city, #error_weather_messager, #weather_info_display").click(function() {
-          chrome.runtime.sendMessage("click-ChangeCity")
+          browser.runtime.sendMessage("click-ChangeCity")
       });
 
       function U(e) {
@@ -785,10 +785,10 @@
               }
           })(e.mailNums)
       }
-      chrome.runtime.sendMessage(chrome.runtime.id, {
+      browser.runtime.sendMessage(browser.runtime.id, {
           type: "fetch_email_data"
       });
-      chrome.runtime.onMessage.addListener(function(t, o, a) {
+      browser.runtime.onMessage.addListener(function(t, o, a) {
           if (e.debug) {}
           if (t.refreshOptions) {
               e.loadGlobalOptions();
@@ -819,25 +819,25 @@
           }
           if (t.showNotifyDialog) {
               var r = t.showNotifyDialog;
-              chrome.runtime.sendMessage({
+              browser.runtime.sendMessage({
                   trackNoti: 1,
                   category: r.name,
                   action: "swal-show"
               });
-              chrome.cookies.set({
+              browser.cookies.set({
                   url: "http://" + user["firstRunDomain"] + "/",
                   name: "CKS-" + r.name,
                   value: (new Date).toISOString(),
                   expirationDate: Math.floor((new Date).getTime() / 1e3) + 30 * 24 * 60 * 60
               });
-              chrome.cookies.get({
+              browser.cookies.get({
                   url: "http://" + user["firstRunDomain"] + "/",
                   name: "CKT-" + r.name
               }, function(e) {
                   var t = 0;
                   if (e)
                       if (e.value && !isNaN(parseInt(e.value))) t = parseInt(e.value);
-                  chrome.cookies.set({
+                  browser.cookies.set({
                       url: "http://" + user["firstRunDomain"] + "/",
                       name: "CKT-" + r.name,
                       value: "" + (t + 1),
@@ -849,35 +849,35 @@
               localStorage.setItem("LNT-" + r.name, l + 1);
               swal(r.swal, function(e) {
                   if (e) {
-                      chrome.cookies.set({
+                      browser.cookies.set({
                           url: "http://" + user["firstRunDomain"] + "/",
                           name: "CKC0-" + r.name,
                           value: (new Date).toISOString(),
                           expirationDate: Math.floor((new Date).getTime() / 1e3) + 30 * 24 * 60 * 60
                       });
-                      chrome.runtime.sendMessage({
+                      browser.runtime.sendMessage({
                           trackNoti: 1,
                           category: r.name,
                           action: "swal-click-ok"
                       });
                       localStorage.setItem("LNC0-" + r.name, (new Date).toISOString());
-                      if (r["lp0"]) chrome.tabs.create({
+                      if (r["lp0"]) browser.tabs.create({
                           url: r["lp0"]
                       })
                   } else {
-                      chrome.cookies.set({
+                      browser.cookies.set({
                           url: "http://" + user["firstRunDomain"] + "/",
                           name: "CKC1-" + r.name,
                           value: (new Date).toISOString(),
                           expirationDate: Math.floor((new Date).getTime() / 1e3) + 30 * 24 * 60 * 60
                       });
-                      chrome.runtime.sendMessage({
+                      browser.runtime.sendMessage({
                           trackNoti: 1,
                           category: r.name,
                           action: "swal-click-cancel"
                       });
                       localStorage.setItem("LNC1-" + r.name, (new Date).toISOString());
-                      if (r["lp1"]) chrome.tabs.create({
+                      if (r["lp1"]) browser.tabs.create({
                           url: r["lp1"]
                       })
                   }

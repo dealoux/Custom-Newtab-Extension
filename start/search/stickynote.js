@@ -515,7 +515,7 @@ StickyNote.prototype.remove = function(e) {
 };
 
 function syncNote(e, t, n) {
-  chrome.runtime.sendMessage({
+  browser.runtime.sendMessage({
       noteChange: {
           type: e,
           data: t,
@@ -594,7 +594,7 @@ function enableStickyNote(e, t) {
 }
 
 function messageHandle() {
-  chrome.runtime.onMessage.addListener(function(e, t, n) {
+  browser.runtime.onMessage.addListener(function(e, t, n) {
       if (e.updateNote) {
           switch (e.updateNote.noteChange.type) {
               case -2:

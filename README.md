@@ -1,5 +1,5 @@
-# Hololive Newtab Extension
-- Replace your new tab page with a custom themed page; featuring notes, to-do list, Gmail unread count & currated Hololive HD wallpapers
+# Vtubers Newtab Extension
+- Replace your new tab page with a custom themed page; featuring notes, to-do list, Gmail unread count & currated Vtubers HD wallpapers
 - Private/Incognito browsing is not supported
 
 # Modification

@@ -1,15 +1,14 @@
 (function(e) {
   "use strict";
   if (e.navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
-      e.chrome.runtime = e.browser.runtime;
-      e.chrome.extension = e.browser.runtime;
-      e.chrome.browserAction = e.browser.browserAction;
-      e.chrome.tabs = e.browser.tabs;
-      e.chrome.windows = e.browser.windows;
-      e.chrome.storage = e.browser.storage;
-      e.chrome.management = e.browser.management;
-      e.chrome.i18n = e.browser.i18n;
-      e.chrome = e.browser
+      e.browser.runtime = e.browser.runtime;
+      e.browser.extension = e.browser.runtime;
+      e.browser.browserAction = e.browser.browserAction;
+      e.browser.tabs = e.browser.tabs;
+      e.browser.windows = e.browser.windows;
+      e.browser.storage = e.browser.storage;
+      e.browser.management = e.browser.management;
+      e.browser.i18n = e.browser.i18n;
   }
   if (!Array.prototype.find) {
       Object.defineProperty(Array.prototype, "find", {

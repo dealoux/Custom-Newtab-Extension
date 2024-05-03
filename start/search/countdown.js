@@ -41,7 +41,7 @@ window.loadCountDownModule = function(e) {
                   $(".countDown").addClass("miniSize");
                   $(".countDown").removeClass("center_center")
               }
-              chrome.runtime.sendMessage({
+              browser.runtime.sendMessage({
                   changeOptions: utils.getGlobalOptions()
               })
           });
@@ -77,7 +77,7 @@ window.loadCountDownModule = function(e) {
                       } else {
                           localStorage.setItem("countdown_notified", "no")
                       }
-                      chrome.runtime.sendMessage({
+                      browser.runtime.sendMessage({
                           changeOptions: utils.getGlobalOptions()
                       })
                   }
@@ -95,7 +95,7 @@ window.loadCountDownModule = function(e) {
                   }
                   $("#countdownTitle").text(i);
                   localStorage.setItem("countdownText", $(this).val());
-                  chrome.runtime.sendMessage({
+                  browser.runtime.sendMessage({
                       changeOptions: utils.getGlobalOptions()
                   });
                   if (e.keyCode == 13) {
@@ -166,11 +166,11 @@ window.loadCountDownModule = function(e) {
                               $("#countdown").fadeOut();
                               clearTimeout(e.countDownThread)
                           }
-                          chrome.runtime.sendMessage({
+                          browser.runtime.sendMessage({
                               changeOptions: utils.getGlobalOptions()
                           });
                           if (localStorage.getItem("snow_type") !== "fireworks") e.stopFireworksCanvas();
-                          chrome.runtime.sendMessage({
+                          browser.runtime.sendMessage({
                               name: "click-CountdownReach",
                               data: localStorage.getItem("countdownText")
                           })
@@ -244,7 +244,7 @@ window.loadCountDownModule = function(e) {
           })
       }
       localStorage.setItem("countdown_background", $(this).is(":checked") ? "yes" : "no");
-      chrome.runtime.sendMessage({
+      browser.runtime.sendMessage({
           changeOptions: utils.getGlobalOptions()
       })
   });
@@ -279,7 +279,7 @@ window.loadCountDownModule = function(e) {
           $("#countdown").fadeOut();
           clearTimeout(e.countDownThread)
       }
-      chrome.runtime.sendMessage({
+      browser.runtime.sendMessage({
           changeOptions: utils.getGlobalOptions()
       })
   })

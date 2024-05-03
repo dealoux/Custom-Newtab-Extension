@@ -76,7 +76,7 @@ window.loadToDoList = function() {
                               $(`.todo_list ul li[data-id="${t}"] i.todo_reminder`).removeClass("has_reminder");
                               delete todoList[o].reminder;
                               localStorage.setItem("todoList", JSON.stringify(todoList));
-                              chrome.runtime.sendMessage({
+                              browser.runtime.sendMessage({
                                   changeOptions: utils.getGlobalOptions()
                               })
                           }
@@ -97,7 +97,7 @@ window.loadToDoList = function() {
                               $(`.todo_list ul li[data-id="${i}"] i.todo_reminder`).addClass("has_reminder");
                               todoList[o].reminder = t;
                               localStorage.setItem("todoList", JSON.stringify(todoList));
-                              chrome.runtime.sendMessage({
+                              browser.runtime.sendMessage({
                                   changeOptions: utils.getGlobalOptions()
                               })
                           }
@@ -115,30 +115,33 @@ window.loadToDoList = function() {
   $(".todo-panel").hide();
   $(".todo_list ul").empty();
   todoList = updateTodoList();
-  todoList.forEach(e => {
-      let o = e.id;
-      let i = e.value;
-      let a = e.status;
-      let d = e.reminder;
-      let n = $("<li>");
-      n.attr("data-id", o);
-      n.html(`<input type="checkbox" id="${o}" class="markDone"><label for="${o}">${i}</label><i class="dl_btn" dl-for="${o}"></i>`);
-      n.css({
-          display: "none"
-      });
-      if (a !== "checked") {
-          n.append(t(i, o, d))
-      }
-      $(".todo_list ul").append(n);
-      n.fadeIn();
-      if (a === "checked") {
-          $(`#${o}`).prop("checked", true);
-          $(`#${o}`).next("label").css({
-              "text-decoration": "line-through",
-              opacity: ".5"
-          })
-      }
-  });
+
+  if(Array.isArray(todoList)) {
+  	todoList.forEach(e => {
+  	    let o = e.id;
+  	    let i = e.value;
+  	    let a = e.status;
+  	    let d = e.reminder;
+  	    let n = $("<li>");
+  	    n.attr("data-id", o);
+  	    n.html(`<input type="checkbox" id="${o}" class="markDone"><label for="${o}">${i}</label><i class="dl_btn" dl-for="${o}"></i>`);
+  	    n.css({
+  	        display: "none"
+  	    });
+  	    if (a !== "checked") {
+  	        n.append(t(i, o, d))
+  	    }
+  	    $(".todo_list ul").append(n);
+  	    n.fadeIn();
+  	    if (a === "checked") {
+  	        $(`#${o}`).prop("checked", true);
+  	        $(`#${o}`).next("label").css({
+  	            "text-decoration": "line-through",
+  	            opacity: ".5"
+  	        })
+  	    }
+  	});
+	}
   a();
   var o = function(e) {
       $(".todo_list li").removeClass("todo_selected");
@@ -184,7 +187,7 @@ window.loadToDoList = function() {
           $(".todo-panel").fadeIn();
           $(".todo-panel").removeClass("hide_panel")
       }
-      chrome.runtime.sendMessage({
+      browser.runtime.sendMessage({
           changeOptions: utils.getGlobalOptions()
       });
       utils.localstorage2cookie()
@@ -221,7 +224,7 @@ window.loadToDoList = function() {
           };
           todoList.push(n);
           localStorage.setItem("todoList", JSON.stringify(todoList));
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               changeOptions: utils.getGlobalOptions()
           });
           utils.localstorage2cookie();
@@ -261,7 +264,7 @@ window.loadToDoList = function() {
               $(this).parents("li").append(t(i.value, i.id, i.reminder))
           }
           localStorage.setItem("todoList", JSON.stringify(todoList));
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               changeOptions: utils.getGlobalOptions()
           });
           utils.localstorage2cookie()
@@ -278,7 +281,7 @@ window.loadToDoList = function() {
           });
           o(true);
           localStorage.setItem("todoList", JSON.stringify(todoList));
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               changeOptions: utils.getGlobalOptions()
           });
           utils.localstorage2cookie();
@@ -304,7 +307,7 @@ window.loadToDoList = function() {
       }
       $(".todo-panel").toggleClass("hide_panel");
       localStorage.setItem("hideTodoPanel", e);
-      chrome.runtime.sendMessage({
+      browser.runtime.sendMessage({
           changeOptions: utils.getGlobalOptions()
       });
       utils.localstorage2cookie()
@@ -358,7 +361,7 @@ var makeAnAlarm = function(e, t) {
           delete todoList[t].reminder;
           todoList[t].status = "checked";
           localStorage.setItem("todoList", JSON.stringify(todoList));
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               changeOptions: utils.getGlobalOptions()
           })
       });
@@ -370,7 +373,7 @@ var makeAnAlarm = function(e, t) {
           }
           todoList[t].reminder = new Date(o + 6e5).toDateInputValue();
           localStorage.setItem("todoList", JSON.stringify(todoList));
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
               changeOptions: utils.getGlobalOptions()
           });
           $(".todoAlarm").remove()

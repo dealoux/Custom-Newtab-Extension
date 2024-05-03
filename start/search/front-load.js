@@ -113,7 +113,7 @@
       var f = Object.keys(user["bg_color_gif"]).indexOf(e.replace(/\.jpg$/, ".gif"));
       if (f > -1) {
           chosenRandomBG = e.replace(/\.jpg$/, ".gif");
-          o.style.backgroundImage = "url(" + chrome.runtime.getURL("/start/skin/images/" + chosenRandomBG) + ")";
+          o.style.backgroundImage = "url(" + browser.runtime.getURL("/start/skin/images/" + chosenRandomBG) + ")";
           var s = Object.values(user["bg_color_gif"])[f];
           if (Math.floor(Math.random() * 100) < 10 || s.indexOf("frame") > -1 || s === "white" || s === "#ffffff") {
               var c = Math.floor(Math.random() * user["frame_bg_list"]);
@@ -137,7 +137,7 @@
           }
       } else {
           chosenRandomBG = e.replace(/\.gif$/, ".jpg");
-          o.style.backgroundImage = "url(" + chrome.runtime.getURL("/start/skin/images/" + chosenRandomBG) + ")";
+          o.style.backgroundImage = "url(" + browser.runtime.getURL("/start/skin/images/" + chosenRandomBG) + ")";
           o.style.backgroundColor = "none";
           o.style.backgroundSize = "cover";
           if (document.getElementById("frame_bg")) {
