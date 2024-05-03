@@ -328,146 +328,155 @@
       }
   });
 
+  function storageSettings(storage) {
+    if (!storage.getItem("disable_weather")) {
+        storage.setItem("disable_weather", "no")
+    }
+    if (!storage.getItem("enable_most_visited")) {
+        if (!storage.getItem("disable_most_visited")) {
+            storage.setItem("enable_most_visited", "yes")
+        } else if (storage.getItem("disable_most_visited") == "yes") {
+            storage.setItem("enable_most_visited", "no")
+        } else {
+            storage.setItem("enable_most_visited", "yes")
+        }
+        storage.removeItem("disable_most_visited")
+    }
+    if (!storage.getItem("enable_apps")) {
+        if (!storage.getItem("disable_apps")) {
+            storage.setItem("enable_apps", "yes")
+        } else if (storage.getItem("disable_apps") == "yes") {
+            storage.setItem("enable_apps", "no")
+        } else {
+            storage.setItem("enable_apps", "yes")
+        }
+        storage.removeItem("disable_apps")
+    }
+    if (!storage.getItem("enable_share")) {
+        if (!storage.getItem("disable_share")) {
+            storage.setItem("enable_share", "yes")
+        } else if (storage.getItem("disable_share") == "yes") {
+            storage.setItem("enable_share", "no")
+        } else {
+            storage.setItem("enable_share", "yes")
+        }
+        storage.removeItem("disable_share")
+    }
+    if (!storage.getItem("enable_todo")) {
+        if (!storage.getItem("disable_todo")) {
+            storage.setItem("enable_todo", "yes")
+        } else if (storage.getItem("disable_todo") == "yes") {
+            storage.setItem("enable_todo", "no")
+        } else {
+            storage.setItem("enable_todo", "yes")
+        }
+        storage.removeItem("disable_todo")
+    }
+    if (!storage.getItem("enable_slideshow")) {
+        storage.setItem("enable_slideshow", "yes")
+    }
+    if (!storage.getItem("hideTodoPanel")) {
+        storage.setItem("hideTodoPanel", "yes")
+    }
+    if (!storage.getItem("todoList")) {
+        storage.setItem("todoList", "[]")
+    }
+    if (!storage.getItem("enable_note")) {
+        storage.setItem("enable_note", "yes")
+    }
+    if (!storage.getItem("notes")) {
+        storage.setItem("notes", "[]")
+    }
+    if (!storage.getItem("bg_animation")) {
+        storage.setItem("bg_animation", "fadeIn")
+    }
+    if (!storage.getItem("enable_autohide")) {
+        storage.setItem("enable_autohide", "no")
+    }
+    if (!storage.getItem("enable_snow")) {
+        storage.setItem("enable_snow", "no")
+    }
+    if (!storage.getItem("snow_type")) {
+        storage.setItem("snow_type", "flake")
+    }
+    if (!storage.getItem("enable_countdown")) {
+        storage.setItem("enable_countdown", "no")
+    }
+    if (storage.getItem("countdownText") === null || storage.getItem("countdownToTime") === null) {
+        var e = (new Date).getUTCFullYear() + 1 + "-01-01T00:00:00";
+        storage.setItem("countdownToTime", e);
+        storage.setItem("countdownText", "New Year")
+    }
+    if (!storage.getItem("countdownPosition")) {
+        storage.setItem("countdownPosition", "Bottom Center")
+    }
+    if (!storage.getItem("countdown_text_color")) {
+        storage.setItem("countdown_text_color", "#ffffff")
+    }
+    if (!storage.getItem("countdown_background")) {
+        storage.setItem("countdown_background", "no")
+    }
+    if (!storage.getItem("countdown_notified")) {
+        storage.setItem("countdown_notified", "no")
+    }
+    if (!storage.getItem("setTimeAutomatically")) {
+        storage.setItem("setTimeAutomatically", "yes")
+    }
+    if (!storage.getItem("latency")) {
+        storage.setItem("latency", "0")
+    }
+    if (!storage.getItem("time_format")) {
+        storage.setItem("time_format", "24h")
+    }
+    if (!storage.getItem("date_format")) {
+        storage.setItem("date_format", "{{d}}.{{m}}.{{y}}")
+    }
+    if (!storage.getItem("units_weather")) {
+        storage.setItem("units_weather", "metric")
+    }
+    if (!storage.getItem("hideLink")) {
+        storage.setItem("hideLink", "[]")
+    }
+    if (!storage.getItem("hideApp")) {
+        storage.setItem("hideApp", "[]")
+    }
+    if (!storage.getItem("had_wl")) {
+        storage.setItem("had_wl", "[]")
+    }
+    if (!storage.getItem("random_all_newtab")) {
+        storage.setItem("random_all_newtab", "yes")
+    }
+    if (!storage.getItem("last_opened")) {
+        storage.setItem("last_opened", (new Date).getTime())
+    }
+    if (!storage.getItem("bg_img")) {
+        storage.setItem("bg_img", "bg-01.jpg")
+    }
+    if (!storage.getItem("last_bg")) {
+        storage.setItem("last_bg", "0")
+    }
+    if (!storage.getItem("shuffle_background") || !storage.getItem("shuffle_favorites")) {
+        storage.setItem("shuffle_background", "yes");
+        storage.setItem("shuffle_favorites", "no")
+    }
+    storage.setItem("bg_img", storage.getItem("bg_img").replace("url(", "").replace("/start/skin/images/", "").replace("/skin/images/", "").replace(")", ""));
+    if (!storage.getItem("mark_favor")) {
+        storage.setItem("mark_favor", JSON.stringify([]))
+    }
+    if (!storage.getItem("likedImages")) {
+        storage.setItem("likedImages", JSON.stringify([]))
+    }
+    if (!storage.getItem("IDT")) {
+        storage.setItem("IDT", (new Date).toISOString())
+    }
+	}
+
   function y() {
-      if (!localStorage.getItem("disable_weather")) {
-          localStorage.setItem("disable_weather", "no")
-      }
-      if (!localStorage.getItem("enable_most_visited")) {
-          if (!localStorage.getItem("disable_most_visited")) {
-              localStorage.setItem("enable_most_visited", "yes")
-          } else if (localStorage.getItem("disable_most_visited") == "yes") {
-              localStorage.setItem("enable_most_visited", "no")
-          } else {
-              localStorage.setItem("enable_most_visited", "yes")
-          }
-          localStorage.removeItem("disable_most_visited")
-      }
-      if (!localStorage.getItem("enable_apps")) {
-          if (!localStorage.getItem("disable_apps")) {
-              localStorage.setItem("enable_apps", "yes")
-          } else if (localStorage.getItem("disable_apps") == "yes") {
-              localStorage.setItem("enable_apps", "no")
-          } else {
-              localStorage.setItem("enable_apps", "yes")
-          }
-          localStorage.removeItem("disable_apps")
-      }
-      if (!localStorage.getItem("enable_share")) {
-          if (!localStorage.getItem("disable_share")) {
-              localStorage.setItem("enable_share", "yes")
-          } else if (localStorage.getItem("disable_share") == "yes") {
-              localStorage.setItem("enable_share", "no")
-          } else {
-              localStorage.setItem("enable_share", "yes")
-          }
-          localStorage.removeItem("disable_share")
-      }
-      if (!localStorage.getItem("enable_todo")) {
-          if (!localStorage.getItem("disable_todo")) {
-              localStorage.setItem("enable_todo", "yes")
-          } else if (localStorage.getItem("disable_todo") == "yes") {
-              localStorage.setItem("enable_todo", "no")
-          } else {
-              localStorage.setItem("enable_todo", "yes")
-          }
-          localStorage.removeItem("disable_todo")
-      }
-      if (!localStorage.getItem("enable_slideshow")) {
-          localStorage.setItem("enable_slideshow", "yes")
-      }
-      if (!localStorage.getItem("hideTodoPanel")) {
-          localStorage.setItem("hideTodoPanel", "yes")
-      }
-      if (!localStorage.getItem("todoList")) {
-          localStorage.setItem("todoList", "[]")
-      }
-      if (!localStorage.getItem("enable_note")) {
-          localStorage.setItem("enable_note", "yes")
-      }
-      if (!localStorage.getItem("notes")) {
-          localStorage.setItem("notes", "[]")
-      }
-      if (!localStorage.getItem("bg_animation")) {
-          localStorage.setItem("bg_animation", "fadeIn")
-      }
-      if (!localStorage.getItem("enable_autohide")) {
-          localStorage.setItem("enable_autohide", "no")
-      }
-      if (!localStorage.getItem("enable_snow")) {
-          localStorage.setItem("enable_snow", "no")
-      }
-      if (!localStorage.getItem("snow_type")) {
-          localStorage.setItem("snow_type", "flake")
-      }
-      if (!localStorage.getItem("enable_countdown")) {
-          localStorage.setItem("enable_countdown", "no")
-      }
-      if (localStorage.getItem("countdownText") === null || localStorage.getItem("countdownToTime") === null) {
-          var e = (new Date).getUTCFullYear() + 1 + "-01-01T00:00:00";
-          localStorage.setItem("countdownToTime", e);
-          localStorage.setItem("countdownText", "New Year")
-      }
-      if (!localStorage.getItem("countdownPosition")) {
-          localStorage.setItem("countdownPosition", "Bottom Center")
-      }
-      if (!localStorage.getItem("countdown_text_color")) {
-          localStorage.setItem("countdown_text_color", "#ffffff")
-      }
-      if (!localStorage.getItem("countdown_background")) {
-          localStorage.setItem("countdown_background", "no")
-      }
-      if (!localStorage.getItem("countdown_notified")) {
-          localStorage.setItem("countdown_notified", "no")
-      }
-      if (!localStorage.getItem("setTimeAutomatically")) {
-          localStorage.setItem("setTimeAutomatically", "yes")
-      }
-      if (!localStorage.getItem("latency")) {
-          localStorage.setItem("latency", "0")
-      }
-      if (!localStorage.getItem("time_format")) {
-          localStorage.setItem("time_format", "24h")
-      }
-      if (!localStorage.getItem("date_format")) {
-          localStorage.setItem("date_format", "{{d}}.{{m}}.{{y}}")
-      }
-      if (!localStorage.getItem("units_weather")) {
-          localStorage.setItem("units_weather", "metric")
-      }
-      if (!localStorage.getItem("hideLink")) {
-          localStorage.setItem("hideLink", "[]")
-      }
-      if (!localStorage.getItem("hideApp")) {
-          localStorage.setItem("hideApp", "[]")
-      }
-      if (!localStorage.getItem("had_wl")) {
-          localStorage.setItem("had_wl", "[]")
-      }
-      if (!localStorage.getItem("random_all_newtab")) {
-          localStorage.setItem("random_all_newtab", "yes")
-      }
-      if (!localStorage.getItem("last_opened")) {
-          localStorage.setItem("last_opened", (new Date).getTime())
-      }
-      if (!localStorage.getItem("bg_img")) {
-          localStorage.setItem("bg_img", "bg-01.jpg")
-      }
-      if (!localStorage.getItem("last_bg")) {
-          localStorage.setItem("last_bg", "0")
-      }
-      if (!localStorage.getItem("shuffle_background") || !localStorage.getItem("shuffle_favorites")) {
-          localStorage.setItem("shuffle_background", "yes");
-          localStorage.setItem("shuffle_favorites", "no")
-      }
-      localStorage.setItem("bg_img", localStorage.getItem("bg_img").replace("url(", "").replace("/start/skin/images/", "").replace("/skin/images/", "").replace(")", ""));
-      if (!localStorage.getItem("mark_favor")) {
-          localStorage.setItem("mark_favor", JSON.stringify([]))
-      }
-      if (!localStorage.getItem("likedImages")) {
-          localStorage.setItem("likedImages", JSON.stringify([]))
-      }
-      if (!localStorage.getItem("IDT")) {
-          localStorage.setItem("IDT", (new Date).toISOString())
-      }
+    if(windowInfo.incognito){
+			storageSettings(sessionStorage);
+		}
+		else{
+			storageSettings(localStorage);
+		}
   }
 })(this);

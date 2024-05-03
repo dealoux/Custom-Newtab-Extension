@@ -13,7 +13,7 @@
   }
 
   // Function to set default settings
-  function setDefaultSettings() {
+  function setDefaultSettings(storage) {
     // Default settings
     var defaultSettings = {
       "shuffle_background": "yes",
@@ -30,20 +30,20 @@
 
     // Set default settings if not already set
     for (var key in defaultSettings) {
-      if (!localStorage.getItem(key)) {
-        localStorage.setItem(key, defaultSettings[key]);
+      if (!storage.getItem(key)) {
+        storage.setItem(key, defaultSettings[key]);
       }
     }
   }
 
   // Set default settings initially
-  setDefaultSettings();
+  setDefaultSettings(localStorage);
 
   // Listen for windows creation
   browser.windows.onCreated.addListener(function(windowInfo) {
     if (windowInfo.incognito) {
       // For private windows, set default settings when the window is created
-      setDefaultSettings();
+      setDefaultSettings(sessionStorage);
     }
   });
 
